@@ -2,6 +2,12 @@
 #include "DxLib.h"
 #include "Mouse.h"
 
+namespace
+{
+	// サイズ
+	constexpr int kRadius = 64;
+}
+
 SceneTitle::SceneTitle() :
 	m_isEnd(false)
 {
@@ -29,4 +35,9 @@ void SceneTitle::update()
 void SceneTitle::draw()
 {
 	DrawString(0, 0, "タイトル画面", GetColor(255, 255, 255));
+}
+
+bool SceneTitle::isPushEnable(Vec2 pos)
+{
+
 }

@@ -14,8 +14,14 @@ public:
 	virtual void update();
 	virtual void draw();
 
-	virtual bool isEnd() { return m_isEnd; }
+	virtual bool isPushEnable(Vec2 pos);
+	virtual bool isEnd() const { return m_isEnd; }
+	virtual bool isPush() const { return m_isPush; }
+
 private:
 	
 	bool m_isEnd;
+
+	bool m_isPush;
+	Vec2 m_catdhOffset;
 };
