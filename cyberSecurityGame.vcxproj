@@ -151,30 +151,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Mouse.cpp" />
-    <ClCompile Include="SceneBase.cpp" />
-    <ClCompile Include="SceneExplanation.cpp" />
-    <ClCompile Include="SceneFail.cpp" />
-    <ClCompile Include="SceneMain.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="SceneResult.cpp" />
-    <ClCompile Include="SceneTitle.cpp" />
-    <ClCompile Include="Vec2.cpp" />
+    <ClCompile Include="Scene\SceneBase.cpp" />
+    <ClCompile Include="Scene\SceneExplanation.cpp" />
+    <ClCompile Include="Scene\SceneFail.cpp" />
+    <ClCompile Include="Scene\SceneMain.cpp" />
+    <ClCompile Include="Scene\SceneManager.cpp" />
+    <ClCompile Include="Scene\SceneResult.cpp" />
+    <ClCompile Include="Scene\SceneTitle.cpp" />
+    <ClCompile Include="Util\Keyboard.cpp" />
+    <ClCompile Include="Util\Mouse.cpp" />
+    <ClCompile Include="Util\Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
-    <ClInclude Include="Keyboard.h" />
-    <ClInclude Include="Mouse.h" />
-    <ClInclude Include="SceneBase.h" />
-    <ClInclude Include="SceneExplanation.h" />
-    <ClInclude Include="SceneFail.h" />
-    <ClInclude Include="SceneMain.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="SceneResult.h" />
-    <ClInclude Include="SceneTitle.h" />
-    <ClInclude Include="Vec2.h" />
+    <ClInclude Include="Scene\SceneBase.h" />
+    <ClInclude Include="Scene\SceneExplanation.h" />
+    <ClInclude Include="Scene\SceneFail.h" />
+    <ClInclude Include="Scene\SceneMain.h" />
+    <ClInclude Include="Scene\SceneManager.h" />
+    <ClInclude Include="Scene\SceneResult.h" />
+    <ClInclude Include="Scene\SceneTitle.h" />
+    <ClInclude Include="Util\Keyboard.h" />
+    <ClInclude Include="Util\Mouse.h" />
+    <ClInclude Include="Util\Vec2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
