@@ -12,6 +12,7 @@ namespace
 }
 
 SceneTitle::SceneTitle() :
+	key(),
 	m_isEnd(false)
 {
 }
