@@ -4,16 +4,20 @@
 class SceneBase
 {
 public:
-	SceneBase() {}
+	SceneBase();
 	virtual ~SceneBase() {}
 
 
 	virtual void init() {}
 	virtual void end() {}
 
-	virtual void update() {}
+	virtual SceneBase* update() { return this; }
 	virtual void draw() {}
 
 	// ƒV[ƒ“I—¹
 	virtual bool isEnd() { return false; }
+
+	virtual void inputKey();
+protected:
+	int m_key[256];
 };

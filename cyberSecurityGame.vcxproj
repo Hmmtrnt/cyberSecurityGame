@@ -158,7 +158,7 @@
     <ClCompile Include="SceneExplanation.cpp" />
     <ClCompile Include="SceneFail.cpp" />
     <ClCompile Include="SceneMain.cpp" />
-    <ClCompile Include="SceneManeger.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneResult.cpp" />
     <ClCompile Include="SceneTitle.cpp" />
     <ClCompile Include="Vec2.cpp" />
@@ -171,7 +171,7 @@
     <ClInclude Include="SceneExplanation.h" />
     <ClInclude Include="SceneFail.h" />
     <ClInclude Include="SceneMain.h" />
-    <ClInclude Include="SceneManeger.h" />
+    <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneResult.h" />
     <ClInclude Include="SceneTitle.h" />
     <ClInclude Include="Vec2.h" />

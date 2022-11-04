@@ -1,19 +1,25 @@
-//#include "DxLib.h"
-//#include "Keyboard.h"
-//
-//namespace
-//{
-//	constexpr int kLogNum = 16;
-//	// 入力ログ０が最新の状態
-//	int padLog[kLogNum];
-//}
-//
-//namespace Pad
-//{
-//	// キーの入力状態取得
-//	void update()
-//	{
-//		// 現在のキーの状態を取得
-//		int keyState = 
-//	}
-//}
+#include "DxLib.h"
+#include "Keyboard.h"
+
+namespace
+{
+	int key[256];
+}
+
+namespace Key
+{
+	void inputKey()
+	{
+		static char buf[256];
+		GetHitKeyStateAll(buf);
+		for (int i = 0; i < 256; i++)
+		{
+			if (buf[i])
+			{
+				if (key[i] == 0) key[i] = 1;
+				else if (key[i] == 1) key[i] = 2;
+			}
+			else key[i] = 0;
+		}
+	}
+}

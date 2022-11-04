@@ -1,4 +1,5 @@
 #include "SceneResult.h"
+#include "SceneTitle.h"
 #include "DxLib.h"
 
 SceneResult::SceneResult() :
@@ -11,13 +12,14 @@ void SceneResult::init()
 	m_isEnd = false;
 }
 
-void SceneResult::update()
+SceneBase* SceneResult::update()
 {
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	if (padState & PAD_INPUT_1)
 	{
-		m_isEnd = true;
+		return (new SceneTitle);
 	}
+	return this;
 }
 
 void SceneResult::draw()

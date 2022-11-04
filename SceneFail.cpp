@@ -1,4 +1,5 @@
 #include "SceneFail.h"
+#include "SceneTitle.h"
 #include "DxLib.h"
 
 SceneFail::SceneFail() :
@@ -11,13 +12,14 @@ void SceneFail::init()
 	m_isEnd = false;
 }
 
-void SceneFail::update()
+SceneBase* SceneFail::update()
 {
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	if (padState & PAD_INPUT_1)
 	{
-		m_isEnd = true;
+		return (new SceneTitle);
 	}
+	return this;
 }
 
 void SceneFail::draw()

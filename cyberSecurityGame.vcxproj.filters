@@ -33,7 +33,7 @@
     <ClCompile Include="SceneBase.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManeger.cpp">
+    <ClCompile Include="SceneManager.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
     <ClCompile Include="SceneTitle.cpp">
@@ -68,7 +68,7 @@
     <ClInclude Include="SceneBase.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManeger.h">
+    <ClInclude Include="SceneManager.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="SceneTitle.h">
