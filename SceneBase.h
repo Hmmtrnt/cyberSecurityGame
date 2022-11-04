@@ -4,7 +4,7 @@
 class SceneBase
 {
 public:
-	SceneBase();
+	SceneBase() {}
 	virtual ~SceneBase() {}
 
 
@@ -17,7 +17,5 @@ public:
 	// ƒV[ƒ“I—¹
 	virtual bool isEnd() { return false; }
 
-	virtual void inputKey();
-protected:
-	int m_key[256];
+	virtual void inputKey(int key[256]);
 };

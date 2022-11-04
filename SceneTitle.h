@@ -17,5 +17,8 @@ public:
 
 	virtual bool isEnd() const { return m_isEnd; }
 private:
+	// キーボードの入力状態
+	int key[256];
+
 	bool m_isEnd;
 };

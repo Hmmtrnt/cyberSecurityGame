@@ -29,7 +29,8 @@ SceneBase* SceneTitle::update()
 		m_isEnd = true;
 	}*/
 
-	if ()
+	inputKey(key);
+	if (key[KEY_INPUT_SPACE] == 1)
 	{
 		return(new SceneExplanation);
 	}

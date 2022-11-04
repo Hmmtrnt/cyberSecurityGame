@@ -14,8 +14,8 @@ void SceneFail::init()
 
 SceneBase* SceneFail::update()
 {
-	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-	if (padState & PAD_INPUT_1)
+	inputKey(key);
+	if (key[KEY_INPUT_SPACE] == 1)
 	{
 		return (new SceneTitle);
 	}

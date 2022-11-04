@@ -15,10 +15,14 @@ void SceneMain::init()
 
 SceneBase* SceneMain::update()
 {
-	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-	if (padState & PAD_INPUT_2)
+	inputKey(key);
+	if (key[KEY_INPUT_SPACE] == 1)
 	{
 		return (new SceneResult);
+	}
+	if (key[KEY_INPUT_RETURN] == 1)
+	{
+		return (new SceneFail);
 	}
 	return this;
 }
