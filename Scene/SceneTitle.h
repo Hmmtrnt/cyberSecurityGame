@@ -18,7 +18,8 @@ public:
 private:
 	// キーボードの入力状態
 	int m_key[256];
-
+	// 
+	int m_hChar1;
 	// フォントのハンドル
 	int m_fontHandle;
 };

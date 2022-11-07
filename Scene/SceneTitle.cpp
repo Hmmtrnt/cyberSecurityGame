@@ -1,7 +1,7 @@
 #include "SceneTitle.h"
 #include "DxLib.h"
+#include "game.h"
 #include "Mouse.h"
-//#include "Keyboard.h"
 #include "SceneMain.h"
 #include "SceneExplanation.h"
 
@@ -9,17 +9,22 @@ namespace
 {
 	// サイズ
 	constexpr int kRadius = 64;
+	// フォントの位置
+	constexpr int kFontWidth = 100;
+	constexpr int kFontHeight = 200;
 }
 
 SceneTitle::SceneTitle() :
+	m_hChar1(-1),
 	m_fontHandle(-1)
 {
-
 }
 
 void SceneTitle::init()
 {
-	m_fontHandle = CreateFontToHandle(NULL, 40, 3);
+	m_hChar1 = LoadGraph("data/TitleCharWaru_1.png");
+
+	m_fontHandle = CreateFontToHandle(NULL, 56, 4);
 }
 
 void SceneTitle::end()
@@ -39,6 +44,6 @@ SceneBase* SceneTitle::update()
 
 void SceneTitle::draw()
 {
-
-	DrawString(0, 0, "タイトル画面", GetColor(255, 255, 255), m_fontHandle);
+	DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, GetColor(200, 200, 200), true);
+	DrawStringToHandle(kFontWidth, kFontHeight, "詐欺メールを見抜けッ！", GetColor(0, 0, 0), m_fontHandle);
 }
