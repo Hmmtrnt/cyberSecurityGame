@@ -1,4 +1,5 @@
 #include "SceneMain.h"
+#include "SceneExplanation.h"
 #include "SceneResult.h"
 #include "SceneFail.h"
 #include "DxLib.h"
@@ -16,13 +17,17 @@ void SceneMain::init()
 SceneBase* SceneMain::update()
 {
 	inputKey(key);
-	if (key[KEY_INPUT_SPACE] == 1)
-	{
-		return (new SceneResult);
-	}
 	if (key[KEY_INPUT_RETURN] == 1)
 	{
 		return (new SceneFail);
+	}
+	else if (key[KEY_INPUT_SPACE] == 1)
+	{
+		return (new SceneResult);
+	}
+	else if (key[KEY_INPUT_TAB] == 1)
+	{
+		return (new SceneExplanation);
 	}
 	return this;
 }

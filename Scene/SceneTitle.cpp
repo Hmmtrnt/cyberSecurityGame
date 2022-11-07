@@ -12,20 +12,25 @@ namespace
 }
 
 SceneTitle::SceneTitle() :
-	key(),
-	m_isEnd(false)
+	m_fontHandle(-1)
 {
+
 }
 
 void SceneTitle::init()
 {
-	m_isEnd = false;
+	m_fontHandle = CreateFontToHandle(NULL, 40, 3);
+}
+
+void SceneTitle::end()
+{
+	DeleteFontToHandle(m_fontHandle);
 }
 
 SceneBase* SceneTitle::update()
 {
-	inputKey(key);
-	if (key[KEY_INPUT_SPACE] == 1)
+	inputKey(m_key);
+	if (m_key[KEY_INPUT_SPACE] == 1)
 	{
 		return(new SceneExplanation);
 	}
@@ -35,5 +40,5 @@ SceneBase* SceneTitle::update()
 void SceneTitle::draw()
 {
 
-	DrawString(0, 0, "タイトル画面", GetColor(255, 255, 255));
+	DrawString(0, 0, "タイトル画面", GetColor(255, 255, 255), m_fontHandle);
 }

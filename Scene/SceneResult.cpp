@@ -3,7 +3,6 @@
 #include "DxLib.h"
 
 SceneResult::SceneResult() :
-	key(),
 	m_isEnd(false)
 {
 }
