@@ -29,6 +29,7 @@ private:
 	int m_hChar2;
 	// フォントのハンドル
 	int m_fontHandle;
+	int m_fontHandle2;
 	// テキスト点滅用フレームカウント
 	int m_textBlinkFrame;
 	// フェード処理

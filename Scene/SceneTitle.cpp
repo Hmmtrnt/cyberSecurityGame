@@ -8,13 +8,16 @@
 namespace
 {
 	// 表示するテキスト
-	const char* const kTitleText = "詐欺メールを見抜け";
+	const char* const kTitleText = "詐欺メールを見抜けッ！";
 	const char* const kGuideText = "スペースキーを押してください";
 	// サイズ
 	constexpr int kRadius = 64;
 	// フォントの位置
 	constexpr int kFontWidth = 100;
 	constexpr int kFontHeight = 200;
+	// ガイドフォントの位置
+	constexpr int kFontGuideWidth = 170;
+	constexpr int kFontGuideHeight = 400;
 	// キャラ１の座標
 	constexpr int kCharWidth1 = 50;
 	constexpr int kCharHeight1 = 300;
@@ -43,6 +46,7 @@ SceneTitle::SceneTitle() :
 	m_hChar1(-1),
 	m_hChar2(-1),
 	m_fontHandle(-1),
+	m_fontHandle2(-1),
 	m_textBlinkFrame(0),
 	m_fadeBright(0),
 	m_fadeSpeed(0)
@@ -54,6 +58,7 @@ void SceneTitle::init()
 	m_hChar1 = LoadGraph("data/TitleCharWaru_1.png");
 	m_hChar2 = LoadGraph("data/TitleCharOdoroki1.png");
 	m_fontHandle = CreateFontToHandle(NULL, 56, 4);
+	m_fontHandle2 = CreateFontToHandle(NULL, 30, 4);
 	m_textBlinkFrame = 0;
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
@@ -82,6 +87,13 @@ SceneBase* SceneTitle::update()
 		return (new SceneExplanation);
 	}
 
+	// テキストの点滅
+	m_textBlinkFrame++;
+	if (m_textBlinkFrame >= kTextDispFrame + kTextHideFrame)
+	{
+		m_textBlinkFrame = 0;
+	}
+
 	if (m_fadeSpeed == 0)
 	{
 		// フェードアウト開始
@@ -105,5 +117,10 @@ void SceneTitle::draw()
 	// 悪そうなキャラ
 	DrawExtendGraph(kCharWidth1, kCharHeight1, kCharWidth1 + kCharSizeWidth1, kCharHeight1 + kCharSizeHeight1, m_hChar1, true);
 	// 文字列
-	DrawStringToHandle(kFontWidth, kFontHeight, "詐欺メールを見抜けッ！", kFontColor, m_fontHandle);
+	DrawStringToHandle(kFontWidth, kFontHeight, kTitleText, kFontColor, m_fontHandle);
+	if (m_textBlinkFrame < kTextDispFrame)
+	{
+		DrawStringToHandle(kFontGuideWidth, kFontGuideHeight, kGuideText, kFontColor, m_fontHandle2);
+	}
+
 }
