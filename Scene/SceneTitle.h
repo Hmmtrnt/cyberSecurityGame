@@ -31,4 +31,8 @@ private:
 	int m_fontHandle;
 	// テキスト点滅用フレームカウント
 	int m_textBlinkFrame;
+	// フェード処理
+	int m_fadeBright;
+	// フェード速度
+	int m_fadeSpeed;
 };

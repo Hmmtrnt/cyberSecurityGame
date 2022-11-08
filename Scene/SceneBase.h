@@ -16,6 +16,6 @@ public:
 
 	// シーン終了
 	virtual bool isEnd() { return false; }
-
+	// キー関連
 	virtual void inputKey(int key[256]);
 };
