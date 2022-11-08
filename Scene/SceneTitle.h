@@ -3,6 +3,11 @@
 #include "Vec2.h"
 #include <vector>
 
+namespace
+{
+	constexpr int keyMax = 256;
+}
+
 class SceneTitle : public SceneBase
 {
 public:
@@ -24,4 +29,6 @@ private:
 	int m_hChar2;
 	// フォントのハンドル
 	int m_fontHandle;
+	// テキスト点滅用フレームカウント
+	int m_textBlinkFrame;
 };
