@@ -12,6 +12,12 @@ namespace
 	// フォントの位置
 	constexpr int kFontWidth = 100;
 	constexpr int kFontHeight = 200;
+	// キャラ１の座標
+	constexpr int kCharWidth = 50;
+	constexpr int kCharHeight = 300;
+	// キャラ１の大きさ
+	constexpr int kCharSizeWidth = 150;
+	constexpr int kCharSizeHeight = 190;
 }
 
 SceneTitle::SceneTitle() :
@@ -45,5 +51,6 @@ SceneBase* SceneTitle::update()
 void SceneTitle::draw()
 {
 	DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, GetColor(200, 200, 200), true);
+	DrawExtendGraph(kCharWidth, kCharHeight, kCharWidth + kCharSizeWidth, kCharHeight + kCharSizeHeight, m_hChar1, true);
 	DrawStringToHandle(kFontWidth, kFontHeight, "詐欺メールを見抜けッ！", GetColor(0, 0, 0), m_fontHandle);
 }

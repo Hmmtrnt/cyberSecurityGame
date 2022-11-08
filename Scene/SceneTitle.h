@@ -18,8 +18,10 @@ public:
 private:
 	// キーボードの入力状態
 	int m_key[256];
-	// 
+	// タイトル画面のキャラクター１
 	int m_hChar1;
+	// タイトル画面のキャラクター２
+	int m_hChar2;
 	// フォントのハンドル
 	int m_fontHandle;
 };
