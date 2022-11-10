@@ -10,34 +10,54 @@ namespace
 	const char* const kText2 = "私「動画見放題？何も知らないけど」";
 	const char* const kText3 = "このメールは詐欺メールである、";
 	const char* const kText4 = "どこが見分けるポイントか探そう";
-	const char* const kText5 = "チャンスは３回だ";
+	const char* const kText5 = "チャンスは３回だ!";
+	const char* const kText6 = "ご入会ありがとうございます！";
+	const char* const kText7 = "動画見放題プラン";
+	const char* const kText8 = "一週間以内にご入金ください";
+	const char* const kText9 = "金額は２万４０００円です";
 	// 背景色
-	const int kBackgroundColor = GetColor(200, 200, 200);	// 灰色
+	const int kBackgroundColor = GetColor(200, 200, 200);	// 灰
 	// 文字色
-	const int kFontColor = GetColor(0, 0, 0);				// 黒
+	const int kFontColorB = GetColor(0, 0, 0);				// 黒
+	const int kFontColorY = GetColor(200, 0, 0);			// 黄
 	// フォントの位置
 	constexpr int kFontWidth1 = 100;
-	constexpr int kFontHeight1 = 90;
+	constexpr int kFontHeight1 = 50;
 	constexpr int kFontWidth2 = 100;
-	constexpr int kFontHeight2 = 130;
+	constexpr int kFontHeight2 = 90;
 	constexpr int kFontWidth3 = 100;
-	constexpr int kFontHeight3 = 170;
+	constexpr int kFontHeight3 = 130;
 	constexpr int kFontWidth4 = 100;
-	constexpr int kFontHeight4 = 210;
+	constexpr int kFontHeight4 = 170;
 	constexpr int kFontWidth5 = 100;
-	constexpr int kFontHeight5 = 250;
+	constexpr int kFontHeight5 = 210;
+
+	constexpr int kFontWidth6 = 240;
+	constexpr int kFontHeight6 = 300;
+	constexpr int kFontWidth7 = 240;
+	constexpr int kFontHeight7 = 340;
+	constexpr int kFontWidth8 = 240;
+	constexpr int kFontHeight8 = 380;
+	constexpr int kFontWidth9 = 240;
+	constexpr int kFontHeight9 = 420;
 	// キャラの座標
 	constexpr int kCharWidth = 50;
-	constexpr int kCharHeight = 300;
+	constexpr int kCharHeight = 350;
 	// キャラの大きさ
 	constexpr int kCharSizeWidth = 150;
 	constexpr int kCharSizeHeight = 190;
 	// オブジェクトの座標
 	constexpr int kObjectWidth = 150;
-	constexpr int kObjectHeight = 450;
+	constexpr int kObjectHeight = 500;
 	// オブジェクトの大きさ
 	constexpr int kObjectSizeWidth = 50;
 	constexpr int kObjectSizeHeight = 60;
+	// 吹き出しの座標
+	constexpr int kSBubbleWidth = 200;
+	constexpr int kSBubbleHeight = 250;
+	// 吹き出しの大きさ
+	constexpr int kSBubbleSizeWidth = 500;
+	constexpr int kSBubbleSizeHeight = 300;
 	// フェード関連
 	constexpr int kFadeBright = 0;	// 処理
 	constexpr int kFadeSpeed = 7;	// 速度
@@ -47,6 +67,7 @@ SceneExplanation::SceneExplanation() :
 	m_fontHandle(-1),
 	m_hChar(-1),
 	m_hObject(-1),
+	m_hSpeechBubble(-1),
 	m_fadeBright(0),
 	m_fadeSpeed(0)
 {
@@ -58,6 +79,7 @@ void SceneExplanation::init()
 	m_fontHandle = CreateFontToHandle(NULL, 30, 4);
 	m_hChar = LoadGraph("data/watasi.png");
 	m_hObject = LoadGraph("data/smartphone.png");
+	m_hSpeechBubble = LoadGraph("data/speechBubble.png");
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
 }
@@ -65,6 +87,10 @@ void SceneExplanation::init()
 void SceneExplanation::end()
 {
 	DeleteFontToHandle(m_fontHandle);
+	DeleteGraph(m_hChar);
+	DeleteGraph(m_hObject);
+	DeleteGraph(m_hSpeechBubble);
+	SetDrawBright(255, 255, 255);
 }
 
 SceneBase* SceneExplanation::update()
@@ -101,12 +127,18 @@ void SceneExplanation::draw()
 	DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, kBackgroundColor, true);
 	// キャラ
 	DrawExtendGraph(kCharWidth, kCharHeight, kCharWidth + kCharSizeWidth, kCharHeight + kCharSizeHeight, m_hChar, true);
-	// オブジェクト
+	// オブジェクト(スマホ)
 	DrawExtendGraph(kObjectWidth, kObjectHeight, kObjectWidth + kObjectSizeWidth, kObjectHeight + kObjectSizeHeight, m_hObject, true);
+	// 吹き出し
+	DrawExtendGraph(kSBubbleWidth, kSBubbleHeight, kSBubbleWidth + kSBubbleSizeWidth, kSBubbleHeight + kSBubbleSizeHeight, m_hSpeechBubble, true);
 	// 文字列
-	DrawStringToHandle(kFontWidth1, kFontHeight1, kText1, kFontColor, m_fontHandle);
-	DrawStringToHandle(kFontWidth2, kFontHeight2, kText2, kFontColor, m_fontHandle);
-	DrawStringToHandle(kFontWidth3, kFontHeight3, kText3, kFontColor, m_fontHandle);
-	DrawStringToHandle(kFontWidth4, kFontHeight4, kText4, kFontColor, m_fontHandle);
-	DrawStringToHandle(kFontWidth5, kFontHeight5, kText5, kFontColor, m_fontHandle);
+	DrawStringToHandle(kFontWidth1, kFontHeight1, kText1, kFontColorB, m_fontHandle);
+	DrawStringToHandle(kFontWidth2, kFontHeight2, kText2, kFontColorB, m_fontHandle);
+	DrawStringToHandle(kFontWidth3, kFontHeight3, kText3, kFontColorB, m_fontHandle);
+	DrawStringToHandle(kFontWidth4, kFontHeight4, kText4, kFontColorB, m_fontHandle);
+	DrawStringToHandle(kFontWidth5, kFontHeight5, kText5, kFontColorB, m_fontHandle);
+	DrawStringToHandle(kFontWidth6, kFontHeight6, kText6, kFontColorY, m_fontHandle);
+	DrawStringToHandle(kFontWidth7, kFontHeight7, kText7, kFontColorB, m_fontHandle);
+	DrawStringToHandle(kFontWidth8, kFontHeight8, kText8, kFontColorB, m_fontHandle);
+	DrawStringToHandle(kFontWidth9, kFontHeight9, kText9, kFontColorB, m_fontHandle);
 }

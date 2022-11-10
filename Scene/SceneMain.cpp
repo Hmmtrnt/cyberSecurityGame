@@ -2,9 +2,12 @@
 #include "SceneResult.h"
 #include "SceneFail.h"
 #include "DxLib.h"
+#include "game.h"
 
 namespace
 {
+	// 背景色
+	const int kBackgroundColor = GetColor(200, 200, 200);	// 灰色
 	// フェード関連
 	constexpr int kFadeBright = 0;	// 処理
 	constexpr int kFadeSpeed = 7;	// 速度
@@ -65,5 +68,6 @@ void SceneMain::draw()
 {
 	// 描画の輝度
 	SetDrawBright(m_fadeBright, m_fadeBright, m_fadeBright);
-	DrawString(0, 0, "メイン画面", GetColor(255, 255, 255));
+	// 背景
+	DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, kBackgroundColor, true);
 }
