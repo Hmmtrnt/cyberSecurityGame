@@ -10,9 +10,7 @@ namespace
 	// 表示するテキスト
 	const char* const kTitleText = "詐欺メールを見抜けッ！";
 	const char* const kGuideText = "スペースキーを押してください";
-	// サイズ
-	constexpr int kRadius = 64;
-	// フォントの位置
+	// タイトルフォントの位置
 	constexpr int kFontWidth = 100;
 	constexpr int kFontHeight = 200;
 	// ガイドフォントの位置
@@ -32,7 +30,7 @@ namespace
 	constexpr int kCharSizeHeight2 = 210;
 	// 文字列の点滅
 	constexpr int kTextDispFrame = 45;	// 表示
-	constexpr int kTextHideFrame = 15;	// 隠れる
+	constexpr int kTextHideFrame = 20;	// 隠れる
 	// 背景色
 	const int kBackgroundColor = GetColor(200, 200, 200);	// 灰色
 	// 文字色
@@ -69,6 +67,7 @@ void SceneTitle::end()
 	DeleteGraph(m_hChar1);
 	DeleteGraph(m_hChar2);
 	DeleteFontToHandle(m_fontHandle);
+	DeleteFontToHandle(m_fontHandle2);
 	SetDrawBright(255, 255, 255);
 }
 
