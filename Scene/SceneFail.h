@@ -13,11 +13,11 @@ public:
 
 	virtual SceneBase* update() override;
 	virtual void draw() override;
-
-	virtual bool isEnd() { return m_isEnd; }
 private:
 	// キーボードの入力状態
-	int key[256];
-
-	bool m_isEnd;
+	int m_key[256];
+	// フェード処理
+	int m_fadeBright;
+	// フェード速度
+	int m_fadeSpeed;
 };

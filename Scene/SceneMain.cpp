@@ -1,22 +1,51 @@
 #include "SceneMain.h"
-#include "SceneExplanation.h"
 #include "SceneResult.h"
 #include "SceneFail.h"
 #include "DxLib.h"
 
+namespace
+{
+	// フェード関連
+	constexpr int kFadeBright = 0;	// 処理
+	constexpr int kFadeSpeed = 7;	// 速度
+}
+
 SceneMain::SceneMain() :
-	m_isEnd(false)
+	m_fadeBright(0),
+	m_fadeSpeed(0)
 {
 }
 
 void SceneMain::init()
 {
-	m_isEnd = false;
+	m_fadeBright = kFadeBright;	// フェード処理
+	m_fadeSpeed = kFadeSpeed;	// フェード速度
 }
 
 SceneBase* SceneMain::update()
 {
-	inputKey(key);
+	// フェードアウト処理
+	m_fadeBright += m_fadeSpeed;
+	if (m_fadeBright >= 255)
+	{
+		m_fadeBright = 255;
+		m_fadeSpeed = 0;
+	}
+	if ((m_fadeBright <= 0) && (m_fadeSpeed < 0))
+	{
+		m_fadeBright = 0;
+		return (new SceneResult);
+	}
+	if (m_fadeSpeed == 0)
+	{
+		// フェードアウト開始
+		inputKey(m_key);
+		if (m_key[KEY_INPUT_SPACE] == 1)
+		{
+			m_fadeSpeed = -kFadeSpeed;
+		}
+	}
+	/*inputKey(key);
 	if (key[KEY_INPUT_RETURN] == 1)
 	{
 		return (new SceneFail);
@@ -28,11 +57,13 @@ SceneBase* SceneMain::update()
 	else if (key[KEY_INPUT_TAB] == 1)
 	{
 		return (new SceneExplanation);
-	}
+	}*/
 	return this;
 }
 
 void SceneMain::draw()
 {
+	// 描画の輝度
+	SetDrawBright(m_fadeBright, m_fadeBright, m_fadeBright);
 	DrawString(0, 0, "メイン画面", GetColor(255, 255, 255));
 }
