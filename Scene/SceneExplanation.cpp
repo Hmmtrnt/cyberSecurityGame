@@ -15,6 +15,7 @@ namespace
 	const char* const kText7 = "動画見放題プラン";
 	const char* const kText8 = "一週間以内にご入金ください";
 	const char* const kText9 = "金額は２万４０００円です";
+	const char* const kText10 = "スペースキーを押してスタート！";
 	// 背景色
 	const int kBackgroundColor = GetColor(200, 200, 200);	// 灰
 	// 文字色
@@ -22,42 +23,43 @@ namespace
 	const int kFontColorY = GetColor(200, 0, 0);			// 黄
 	// フォントの位置
 	constexpr int kFontWidth1 = 100;
-	constexpr int kFontHeight1 = 50;
+	constexpr int kFontHeight1 = 30;
 	constexpr int kFontWidth2 = 100;
-	constexpr int kFontHeight2 = 90;
+	constexpr int kFontHeight2 = 70;
 	constexpr int kFontWidth3 = 100;
-	constexpr int kFontHeight3 = 130;
+	constexpr int kFontHeight3 = 110;
 	constexpr int kFontWidth4 = 100;
-	constexpr int kFontHeight4 = 170;
+	constexpr int kFontHeight4 = 150;
 	constexpr int kFontWidth5 = 100;
-	constexpr int kFontHeight5 = 210;
-
+	constexpr int kFontHeight5 = 190;
 	constexpr int kFontWidth6 = 240;
-	constexpr int kFontHeight6 = 300;
+	constexpr int kFontHeight6 = 280;
 	constexpr int kFontWidth7 = 240;
-	constexpr int kFontHeight7 = 340;
+	constexpr int kFontHeight7 = 320;
 	constexpr int kFontWidth8 = 240;
-	constexpr int kFontHeight8 = 380;
+	constexpr int kFontHeight8 = 360;
 	constexpr int kFontWidth9 = 240;
-	constexpr int kFontHeight9 = 420;
+	constexpr int kFontHeight9 = 400;
+	constexpr int kFontWidth10 = 240;
+	constexpr int kFontHeight10 = 510;
 	// キャラの座標
 	constexpr int kCharWidth = 50;
-	constexpr int kCharHeight = 350;
+	constexpr int kCharHeight = 330;
 	// キャラの大きさ
 	constexpr int kCharSizeWidth = 150;
 	constexpr int kCharSizeHeight = 190;
 	// オブジェクトの座標
 	constexpr int kObjectWidth = 150;
-	constexpr int kObjectHeight = 500;
+	constexpr int kObjectHeight = 480;
 	// オブジェクトの大きさ
-	constexpr int kObjectSizeWidth = 50;
+	constexpr int kObjectSizeWidth = 70;
 	constexpr int kObjectSizeHeight = 60;
 	// 吹き出しの座標
 	constexpr int kSBubbleWidth = 200;
-	constexpr int kSBubbleHeight = 250;
+	constexpr int kSBubbleHeight = 230;
 	// 吹き出しの大きさ
 	constexpr int kSBubbleSizeWidth = 500;
-	constexpr int kSBubbleSizeHeight = 300;
+	constexpr int kSBubbleSizeHeight = 270;
 	// フェード関連
 	constexpr int kFadeBright = 0;	// 処理
 	constexpr int kFadeSpeed = 7;	// 速度
@@ -141,4 +143,5 @@ void SceneExplanation::draw()
 	DrawStringToHandle(kFontWidth7, kFontHeight7, kText7, kFontColorB, m_fontHandle);
 	DrawStringToHandle(kFontWidth8, kFontHeight8, kText8, kFontColorB, m_fontHandle);
 	DrawStringToHandle(kFontWidth9, kFontHeight9, kText9, kFontColorB, m_fontHandle);
+	DrawStringToHandle(kFontWidth10, kFontHeight10, kText10, kFontColorB, m_fontHandle);
 }

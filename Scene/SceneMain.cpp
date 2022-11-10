@@ -68,6 +68,8 @@ void SceneMain::draw()
 {
 	// •`‰æ‚Ì‹P“x
 	SetDrawBright(m_fadeBright, m_fadeBright, m_fadeBright);
+
+
 	// ”wŒi
 	DrawBox(0, 0, Game::kScreenWidth, Game::kScreenHeight, kBackgroundColor, true);
 }
