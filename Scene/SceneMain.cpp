@@ -3,27 +3,13 @@
 #include "SceneFail.h"
 #include "DxLib.h"
 #include "game.h"
+#include "Mouse.h"
 
 namespace
 {
-	// 文字列
-	const char* const kURL = "URL →";
-	const char* const kText = "本文→";
 	// 色
 	const int kColorG = GetColor(200, 200, 200);	// 灰色
 	const int kColorB = GetColor(0, 0, 0);			// 黒
-	// URLの枠の座標
-	constexpr int kURLFrameX = 350;
-	constexpr int kURLFrameY = 50;
-	// URLの枠のサイズ
-	constexpr int kSizeURLFrameX = 400;
-	constexpr int kSizeURLFrameY = 130;
-	// 本文の枠の座標
-	constexpr int kTextFrameX = 350;
-	constexpr int kTextFrameY = 230;
-	// 本文の枠のサイズ
-	constexpr int kSizeTextFrameX = 400;
-	constexpr int kSizeTextFrameY = 300;
 	// フェード関連
 	constexpr int kFadeBright = 0;	// 処理
 	constexpr int kFadeSpeed = 7;	// 速度
@@ -43,6 +29,8 @@ void SceneMain::init()
 	m_fontHandle = CreateFontToHandle(NULL, 30, 4);
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
+	box.init();
+	mouse.init();
 }
 
 void SceneMain::end()
@@ -52,7 +40,7 @@ void SceneMain::end()
 
 SceneBase* SceneMain::update()
 {
-	// フェードアウト処理
+	mouse.update();
 	m_fadeBright += m_fadeSpeed;
 	if (m_fadeBright >= 255)
 	{
@@ -95,4 +83,7 @@ void SceneMain::draw()
 	SetDrawBright(m_fadeBright, m_fadeBright, m_fadeBright);
 	// 背景
 	DrawGraph(0, 0, m_hBackGround, true);
+	// 答えとなる当たり判定
+	box.draw();
+	mouse.draw();
 }

@@ -1,5 +1,7 @@
 #pragma once
 #include "SceneBase.h"
+#include "Box.h"
+#include "Mouse.h"
 
 class SceneMain : public SceneBase
 {
@@ -25,5 +27,6 @@ private:
 	// フェード速度
 	int m_fadeSpeed;
 
-	
+	Box box;
+	Mouse mouse;
 };

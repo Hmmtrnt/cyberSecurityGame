@@ -78,13 +78,13 @@ SceneExplanation::SceneExplanation() :
 
 void SceneExplanation::init()
 {
-	m_fontHandle = CreateFontToHandle(NULL, 30, 4);
+	m_fontHandle = CreateFontToHandle("BIZ UDPゴシック", 30, 5);
 	m_hChar = LoadGraph("data/watasi.png");
 	m_hObject = LoadGraph("data/smartphone.png");
 	m_hSpeechBubble = LoadGraph("data/speechBubble.png");
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
-	
+//	ChangeFont("ＭＳ 明朝");
 }
 
 void SceneExplanation::end()
