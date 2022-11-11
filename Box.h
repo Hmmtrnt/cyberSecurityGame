@@ -16,14 +16,15 @@ public:
 	void update();
 	// 描画
 	void draw();
-	// 表示位置の設定
-	void setPos(Vec2 pos) { m_pos = pos; }
 
-	// 押したかどうか
-	bool isPushEnable(Vec2 pos);
+	// 情報取得
+	Vec2 getPos() const { return m_pos; }	// 座標
+	Vec2 getVec() const { return m_vec; }	// サイズ
 
 protected:
 	// ボックスの座標
 	Vec2 m_pos;
+	// ボックスのサイズ
+	Vec2 m_vec;
 
 };

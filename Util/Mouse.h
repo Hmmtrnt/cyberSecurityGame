@@ -12,6 +12,7 @@ public:
 	void end();
 	void update();
 	void draw();
+
 private:
 	// ‰Ÿ‚³‚ê‚½‚è—£‚³‚ê‘«‚è‚·‚éƒ{ƒ^ƒ“‚Ì’l
 	int m_button;
