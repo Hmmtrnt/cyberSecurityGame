@@ -84,6 +84,7 @@ void SceneExplanation::init()
 	m_hSpeechBubble = LoadGraph("data/speechBubble.png");
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
+	
 }
 
 void SceneExplanation::end()
@@ -123,6 +124,9 @@ SceneBase* SceneExplanation::update()
 
 void SceneExplanation::draw()
 {
+//	ChangeFont("font/BIZ-UDGothicR.ttc");
+//	ChangeFont("ＭＳ 明朝");
+
 	// 描画の輝度
 	SetDrawBright(m_fadeBright, m_fadeBright, m_fadeBright);
 	// 背景

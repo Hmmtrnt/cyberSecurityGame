@@ -19,6 +19,7 @@ void SceneResult::init()
 {
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
+	ChangeFont("ＭＳ 明朝");
 }
 
 SceneBase* SceneResult::update()
@@ -44,11 +45,6 @@ SceneBase* SceneResult::update()
 			m_fadeSpeed = -kFadeSpeed;
 		}
 	}
-	/*inputKey(key);
-	if (key[KEY_INPUT_SPACE] == 1)
-	{
-		return (new SceneTitle);
-	}*/
 	return this;
 }
 

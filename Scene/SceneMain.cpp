@@ -43,6 +43,7 @@ void SceneMain::init()
 	m_fontHandle = CreateFontToHandle(NULL, 30, 4);
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
+	ChangeFont("ＭＳ 明朝");
 }
 
 void SceneMain::end()
