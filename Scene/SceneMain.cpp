@@ -3,7 +3,7 @@
 #include "SceneFail.h"
 #include "DxLib.h"
 #include "game.h"
-#include "Mouse.h"
+#include "mouse.h"
 
 namespace
 {
@@ -21,6 +21,8 @@ SceneMain::SceneMain() :
 	m_fadeBright(0),
 	m_fadeSpeed(0)
 {
+	m_box = new Box;
+	m_mouse = new Mouse;
 }
 
 void SceneMain::init()
@@ -29,8 +31,8 @@ void SceneMain::init()
 	m_fontHandle = CreateFontToHandle(NULL, 30, 4);
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
-	box.init();
-	mouse.init();
+	m_box->init();
+	m_mouse->init();
 }
 
 void SceneMain::end()
@@ -40,7 +42,7 @@ void SceneMain::end()
 
 SceneBase* SceneMain::update()
 {
-	mouse.update();
+	m_mouse->update();
 	m_fadeBright += m_fadeSpeed;
 	if (m_fadeBright >= 255)
 	{
@@ -55,11 +57,15 @@ SceneBase* SceneMain::update()
 	if (m_fadeSpeed == 0)
 	{
 		// フェードアウト開始
-		inputKey(m_key);
-		if (m_key[KEY_INPUT_SPACE] == 1)
+		if (CheckHit(m_box->getPos(), m_box->getSize(), m_mouse->getPosX(), m_mouse->getPosY(), m_mouse->getSizeX(), m_mouse->getSizeY()))
 		{
 			m_fadeSpeed = -kFadeSpeed;
 		}
+		/*inputKey(m_key);
+		if (m_key[KEY_INPUT_SPACE] == 1)
+		{
+			m_fadeSpeed = -kFadeSpeed;
+		}*/
 	}
 	/*inputKey(key);
 	if (key[KEY_INPUT_RETURN] == 1)
@@ -84,6 +90,18 @@ void SceneMain::draw()
 	// 背景
 	DrawGraph(0, 0, m_hBackGround, true);
 	// 答えとなる当たり判定
-	box.draw();
-	mouse.draw();
+	m_box->draw();
+	m_mouse->draw();
+}
+
+bool SceneMain::CheckHit(Vec2* pos, Vec2* size, int m_mousePosX, int m_mousePosY, int m_mouseSizeX, int m_mouseSizeY)
+{
+	if ((size->x > m_mousePosX) && (pos->x < m_mouseSizeX))
+	{
+		if ((size->y > m_mousePosY) && (pos->y < m_mousePosY))
+		{
+			return true;
+		}
+	}
+	return false;
 }

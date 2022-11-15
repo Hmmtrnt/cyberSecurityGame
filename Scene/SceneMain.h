@@ -15,6 +15,9 @@ public:
 
 	virtual SceneBase* update() override;
 	virtual void draw() override;
+
+	bool CheckHit(Vec2* pos, Vec2* size, int mousePosX, int mousePosY, int mouseSizeX, int mouseSizeY);
+
 private:
 	// キーボードの入力状態
 	int m_key[256];
@@ -27,6 +30,6 @@ private:
 	// フェード速度
 	int m_fadeSpeed;
 
-	Box box;
-	Mouse mouse;
+	Box* m_box;
+	Mouse* m_mouse;
 };

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vec2.h"
+#include "Mouse.h"
 
 class Box
 {
@@ -17,14 +18,17 @@ public:
 	// 描画
 	void draw();
 
+	//bool CheckHit(Vec2* pos, Vec2* size, int mousePosX, int mousePosY, int mouseSizeX, int mouseSizeY);
+
 	// 情報取得
-	Vec2 getPos() const { return m_pos; }	// 座標
-	Vec2 getVec() const { return m_vec; }	// サイズ
+	Vec2* getPos() const { return m_pos; }		// 座標
+	Vec2* getSize() const { return m_size; }	// サイズ
 
 protected:
 	// ボックスの座標
-	Vec2 m_pos;
+	Vec2* m_pos;
 	// ボックスのサイズ
-	Vec2 m_vec;
-
+	Vec2* m_size;
+	// クリックしたときの判定
+	Mouse* m_mouse;
 };

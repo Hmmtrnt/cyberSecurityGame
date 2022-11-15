@@ -59,6 +59,6 @@ void Mouse::draw()
 	// 描画するかどうかのフラグが立っていたら、マウスの左ボタンが押されたり離されたりした座標に小さい四角形を描画する
 	if (m_drawFlag == TRUE)
 	{
-		DrawBox(m_drawX - 2, m_drawY - 2, m_drawX + 2, m_drawY + 2, m_drawColor, TRUE);
+		DrawBox(getPosX(), getPosY(), getSizeX(), getSizeY(), m_drawColor, TRUE);
 	}
 }

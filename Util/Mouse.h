@@ -13,7 +13,12 @@ public:
 	void update();
 	void draw();
 
-private:
+	int getPosX() const { return m_drawX - 2; }		// 座標
+	int getPosY() const { return m_drawY - 2; }		// 座標
+	int getSizeX() const { return m_drawX + 2; }	// サイズ
+	int getSizeY() const { return m_drawY + 2; }	// サイズ
+
+protected:
 	// 押されたり離され足りするボタンの値
 	int m_button;
 	// クリックした座標

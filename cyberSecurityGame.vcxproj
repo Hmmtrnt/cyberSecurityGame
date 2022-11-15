@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CheckHit.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object\Box.cpp" />
     <ClCompile Include="Scene\SceneBase.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="Util\Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CheckHit.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="Object\Box.h" />
     <ClInclude Include="Scene\SceneBase.h" />
