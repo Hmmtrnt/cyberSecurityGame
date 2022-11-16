@@ -22,6 +22,8 @@ private:
 	int m_fadeSpeed;
 	// 背景のグラフィックハンドル
 	int m_hBackGround;
+	// フォントのハンドル
+	int m_fontHandle;
 	// テキスト点滅用フレームカウント
 	int m_textBlinkFrame;
 };
