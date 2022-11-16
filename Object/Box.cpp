@@ -46,24 +46,4 @@ void Box::update()
 void Box::draw()
 {
 	DrawBox(m_pos->x, m_pos->y, m_pos->x + m_size->x, m_pos->y + m_size->y, kColorB, false);
-	/*if (CheckHit(m_pos, m_size, m_mouse->getPosX(), m_mouse->getPosY(), m_mouse->getSizeX(), m_mouse->getSizeY()))
-	{
-		DrawString(0, 0, "‰Ÿ‚¹‚½", GetColor(0, 0, 0), true);
-	}
-	else
-	{
-		DrawString(0, 0, "‰Ÿ‚¹‚Ä‚¢‚È‚¢", GetColor(0, 0, 0), true);
-	}*/
 }
-
-//bool Box::CheckHit(Vec2* pos, Vec2* size, int mousePosX, int mousePosY, int mouseSizeX, int mouseSizeY)
-//{
-//	if ((size->x > mousePosX) && (pos->x < mouseSizeX))
-//	{
-//		if ((size->y > mousePosY) && (pos->y < mousePosY))
-//		{
-//			return true;
-//		}
-//	}
-//	return false;
-//}

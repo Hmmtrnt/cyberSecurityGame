@@ -84,7 +84,6 @@ void SceneExplanation::init()
 	m_hSpeechBubble = LoadGraph("data/speechBubble.png");
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
-//	ChangeFont("ＭＳ 明朝");
 }
 
 void SceneExplanation::end()

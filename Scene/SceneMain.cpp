@@ -39,7 +39,9 @@ void SceneMain::init()
 
 void SceneMain::end()
 {
+	DeleteGraph(m_hBackGround);
 	DeleteFontToHandle(m_fontHandle);
+	
 }
 
 SceneBase* SceneMain::update()
@@ -75,26 +77,7 @@ SceneBase* SceneMain::update()
 			DrawString(0, 0, "Ž¸”s", GetColor(0, 0, 0), true);
 			m_fadeSpeed = -kFadeSpeed;
 		}
-		
-		/*inputKey(m_key);
-		if (m_key[KEY_INPUT_SPACE] == 1)
-		{
-			m_fadeSpeed = -kFadeSpeed;
-		}*/
 	}
-	/*inputKey(key);
-	if (key[KEY_INPUT_RETURN] == 1)
-	{
-		return (new SceneFail);
-	}
-	else if (key[KEY_INPUT_SPACE] == 1)
-	{
-		return (new SceneResult);
-	}
-	else if (key[KEY_INPUT_TAB] == 1)
-	{
-		return (new SceneExplanation);
-	}*/
 	return this;
 }
 
