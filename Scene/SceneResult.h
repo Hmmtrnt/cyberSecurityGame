@@ -9,7 +9,7 @@ public:
 
 
 	virtual void init() override;
-	virtual void end() override {}
+	virtual void end() override;
 
 	virtual SceneBase* update() override;
 	virtual void draw() override;
@@ -20,4 +20,8 @@ private:
 	int m_fadeBright;
 	// フェード速度
 	int m_fadeSpeed;
+	// 背景のグラフィックハンドル
+	int m_hBackGround;
+	// テキスト点滅用フレームカウント
+	int m_textBlinkFrame;
 };

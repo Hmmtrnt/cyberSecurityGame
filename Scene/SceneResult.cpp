@@ -7,19 +7,29 @@ namespace
 	// フェード関連
 	constexpr int kFadeBright = 0;	// 処理
 	constexpr int kFadeSpeed = 7;	// 速度
+	// 文字列の点滅
+	constexpr int kTextDispFrame = 45;	// 表示
+	constexpr int kTextHideFrame = 20;	// 隠れる
 }
 
 SceneResult::SceneResult() :
 	m_fadeBright(0),
-	m_fadeSpeed(0)
+	m_fadeSpeed(0),
+	m_hBackGround(-1),
+	m_textBlinkFrame(0)
 {
 }
 
 void SceneResult::init()
 {
-	m_fadeBright = kFadeBright;	// フェード処理
-	m_fadeSpeed = kFadeSpeed;	// フェード速度
-	//ChangeFont("ＭＳ 明朝");
+	m_fadeBright = kFadeBright;								// フェード処理
+	m_fadeSpeed = kFadeSpeed;								// フェード速度
+	m_hBackGround = LoadGraph("data/SceneResult.png");	// 背景のグラフィックハンドル
+}
+
+void SceneResult::end()
+{
+	DeleteGraph(m_hBackGround);
 }
 
 SceneBase* SceneResult::update()
@@ -52,5 +62,6 @@ void SceneResult::draw()
 {
 	// 描画の輝度
 	SetDrawBright(m_fadeBright, m_fadeBright, m_fadeBright);
-	DrawString(0, 0, "リザルト画面", GetColor(255, 255, 255));
+	//DrawString(0, 0, "リザルト画面", GetColor(255, 255, 255));
+	DrawGraph(0, 0, m_hBackGround, true);
 }

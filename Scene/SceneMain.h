@@ -1,24 +1,29 @@
 #pragma once
 #include "SceneBase.h"
-#include "Box.h"
-#include "Mouse.h"
+//#include "Box.h"
+//#include "Mouse.h"
+
+//class SceneBase;
+class Box;
+class Mouse;
+class Vec2;
 
 class SceneMain : public SceneBase
 {
 public:
 	SceneMain();
-	virtual ~SceneMain() {}
+	virtual ~SceneMain();
 
 	// ‰Šú‰»
-	virtual void init() override;
+	virtual void init();
 	// C—¹
-	virtual void end() override;
+	virtual void end();
 
 	// XVˆ—
-	virtual SceneBase* update() override;
+	virtual SceneBase* update();
 
 	// •`‰æ
-	virtual void draw() override;
+	virtual void draw();
 
 	// “–‚½‚è”»’è
 	bool CheckHit(Vec2* pos, Vec2* size, int mousePosX, int mousePosY, int mouseSizeX, int mouseSizeY);

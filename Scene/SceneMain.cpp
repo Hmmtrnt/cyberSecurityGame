@@ -4,6 +4,8 @@
 #include "DxLib.h"
 #include "game.h"
 #include "mouse.h"
+#include "Box.h"
+#include "Mouse.h"
 
 namespace
 {
@@ -20,10 +22,18 @@ SceneMain::SceneMain() :
 	m_fontHandle(-1),
 	m_fadeBright(0),
 	m_fadeSpeed(0),
-	m_pushNum(0)
+	m_pushNum(0),
+	m_box(nullptr),
+	m_mouse(nullptr)
 {
 	m_box = new Box;
 	m_mouse = new Mouse;
+}
+
+SceneMain::~SceneMain()
+{
+	delete m_box;
+	delete m_mouse;
 }
 
 void SceneMain::init()
