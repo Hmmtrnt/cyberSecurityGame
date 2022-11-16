@@ -6,10 +6,9 @@ public:
 	Mouse();
 	~Mouse();
 
-	void init();
-	void end();
-	void update(int& pushNum);
-	void draw();
+	virtual void init();
+	virtual void end();
+	virtual void update(int& pushNum);
 
 	int getPosX() const { return m_drawX - 2; }		// À•W
 	int getPosY() const { return m_drawY - 2; }		// À•W

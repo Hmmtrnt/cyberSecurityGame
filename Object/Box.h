@@ -15,10 +15,6 @@ public:
 	void end();
 	// ˆ—
 	void update();
-	// •`‰æ
-	void draw();
-
-	//bool CheckHit(Vec2* pos, Vec2* size, int mousePosX, int mousePosY, int mouseSizeX, int mouseSizeY);
 
 	// î•ñæ“¾
 	Vec2* getPos() const { return m_pos; }		// À•W

@@ -26,11 +26,10 @@ Box::~Box()
 
 void Box::init()
 {
-	// ↓仮座標
-	m_pos->x = 320;	// X座標
-	m_pos->y = 40;	// Y座標
-	m_size->x = 445;	// X座標
-	m_size->y = 50;	// Y座標
+	m_pos->x = 320;		// X座標
+	m_pos->y = 40;		// Y座標
+	m_size->x = 445;	// X座標サイズ
+	m_size->y = 50;		// Y座標サイズ
 }
 
 void end()
@@ -41,9 +40,4 @@ void end()
 void Box::update()
 {
 	
-}
-
-void Box::draw()
-{
-	DrawBox(m_pos->x, m_pos->y, m_pos->x + m_size->x, m_pos->y + m_size->y, kColorB, false);
 }

@@ -31,7 +31,7 @@ void Mouse::init()
 
 void Mouse::end()
 {
-
+	m_logType = 0;
 }
 
 void Mouse::update(int& pushNum)
@@ -49,19 +49,15 @@ void Mouse::update(int& pushNum)
 			if (m_logType == MOUSE_INPUT_LOG_DOWN)
 			{
 				pushNum--;
+				if (pushNum <= 0)
+				{
+					pushNum = 0;
+				}
 			}
-			
-			// 四角形の色を押された場合は白に、離された場合は紫にする
-			m_drawColor = m_logType == MOUSE_INPUT_LOG_DOWN ? GetColor(255, 255, 255) : GetColor(255, 0, 255);
+			else if (m_logType == MOUSE_INPUT_LOG_UP)
+			{
+				return;
+			}
 		}
-	}
-}
-
-void Mouse::draw()
-{
-	// 描画するかどうかのフラグが立っていたら、マウスの左ボタンが押されたり離されたりした座標に小さい四角形を描画する
-	if (m_drawFlag == TRUE)
-	{
-		DrawBox(getPosX(), getPosY(), getSizeX(), getSizeY(), m_drawColor, TRUE);
 	}
 }

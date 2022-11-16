@@ -51,7 +51,7 @@ void SceneMain::end()
 {
 	DeleteGraph(m_hBackGround);
 	DeleteFontToHandle(m_fontHandle);
-	
+	m_mouse->end();
 }
 
 SceneBase* SceneMain::update()
@@ -98,8 +98,6 @@ void SceneMain::draw()
 	// ”wŒi
 	DrawGraph(0, 0, m_hBackGround, true);
 	// “š‚¦‚Æ‚È‚é“–‚½‚è”»’è
-	m_box->draw();
-	m_mouse->draw();
 
 	if (CheckHit(m_box->getPos(), m_box->getSize(), m_mouse->getPosX(), m_mouse->getPosY(), m_mouse->getSizeX(), m_mouse->getSizeY()))
 	{
