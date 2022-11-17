@@ -12,6 +12,7 @@ namespace
 	// 色
 	const int kColorG = GetColor(200, 200, 200);	// 灰色
 	const int kColorB = GetColor(0, 0, 0);			// 黒
+	const int kColorR = GetColor(255, 0, 0);		// 赤
 	// フェード関連
 	constexpr int kFadeBright = 0;	// 処理
 	constexpr int kFadeSpeed = 7;	// 速度
@@ -39,7 +40,7 @@ SceneMain::~SceneMain()
 void SceneMain::init()
 {
 	m_hBackGround = LoadGraph("data/SceneMain.png");
-	m_fontHandle = CreateFontToHandle(NULL, 30, 4);
+	m_fontHandle = CreateFontToHandle("BIZ UDPゴシック", 100, 4);
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
 	m_pushNum = 3;
@@ -79,12 +80,12 @@ SceneBase* SceneMain::update()
 		// フェードアウト開始
 		if (CheckHit(m_box->getPos(), m_box->getSize(), m_mouse->getPosX(), m_mouse->getPosY(), m_mouse->getSizeX(), m_mouse->getSizeY()))
 		{
-			DrawString(0, 0, "押された", GetColor(0, 0, 0), true);
+			//DrawString(0, 0, "押された", GetColor(0, 0, 0), true);
 			m_fadeSpeed = -kFadeSpeed;
 		}
 		else if (m_pushNum <= 0)
 		{
-			DrawString(0, 0, "失敗", GetColor(0, 0, 0), true);
+			//DrawString(0, 0, "失敗", GetColor(0, 0, 0), true);
 			m_fadeSpeed = -kFadeSpeed;
 		}
 	}
@@ -97,17 +98,15 @@ void SceneMain::draw()
 	SetDrawBright(m_fadeBright, m_fadeBright, m_fadeBright);
 	// 背景
 	DrawGraph(0, 0, m_hBackGround, true);
-	// 答えとなる当たり判定
 
-	if (CheckHit(m_box->getPos(), m_box->getSize(), m_mouse->getPosX(), m_mouse->getPosY(), m_mouse->getSizeX(), m_mouse->getSizeY()))
+	if (m_pushNum >= 2)
 	{
-		DrawString(0, 0, "押された", GetColor(0, 0, 0), true);
+		DrawFormatStringToHandle(15, 400, kColorB, m_fontHandle, "後%d回", m_pushNum);
 	}
-	else
+	else if (m_pushNum <= 1)
 	{
-	DrawString(0, 0, "押されていない", GetColor(0, 0, 0), true);
+		DrawFormatStringToHandle(15, 400, kColorR, m_fontHandle, "後%d回", m_pushNum);
 	}
-	DrawFormatString(0, 15, kColorB, "後%d回", m_pushNum);
 }
 
 bool SceneMain::CheckHit(Vec2* pos, Vec2* size, int m_mousePosX, int m_mousePosY, int m_mouseSizeX, int m_mouseSizeY)

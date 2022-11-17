@@ -39,7 +39,7 @@ void Mouse::update(int& pushNum)
 	// マウスのボタンが押されたり離されたりしたかどうかの情報を取得する
 	if (GetMouseInputLog2(&m_button, &m_clickX, &m_clickY, &m_logType, TRUE) == 0)
 	{
-		// 左ボタンが押されたり離されたりしていたら描画するかどうかのフラグを立てて、座標も保存する
+		// 左ボタンが押されたり離されたりしていたら処理するかどうかのフラグを立てて、座標も保存する
 		if ((m_button & MOUSE_INPUT_LEFT) != 0)
 		{
 			m_drawFlag = TRUE;

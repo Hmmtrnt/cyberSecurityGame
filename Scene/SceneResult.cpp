@@ -80,7 +80,6 @@ void SceneResult::draw()
 {
 	// •`‰æ‚Ì‹P“x
 	SetDrawBright(m_fadeBright, m_fadeBright, m_fadeBright);
-	//DrawString(0, 0, "ƒŠƒUƒ‹ƒg‰æ–Ê", GetColor(255, 255, 255));
 	DrawGraph(0, 0, m_hBackGround, true);
 	if (m_textBlinkFrame < kTextDispFrame)
 	{
