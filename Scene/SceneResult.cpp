@@ -26,6 +26,10 @@ SceneResult::SceneResult() :
 	m_fontHandle(-1),
 	m_textBlinkFrame(0)
 {
+	for (int i = 0; i < Result::kKeyMax; i++)
+	{
+		m_key[i];
+	}
 }
 
 void SceneResult::init()

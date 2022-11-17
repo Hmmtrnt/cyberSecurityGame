@@ -4,9 +4,9 @@
 
 class Vec2;
 
-namespace
+namespace Title
 {
-	constexpr int keyMax = 256;
+	constexpr int kKeyMax = 256;
 }
 
 class SceneTitle : public SceneBase
@@ -23,7 +23,7 @@ public:
 	virtual void draw() override;
 private:
 	// キーボードの入力状態
-	int m_key[keyMax];
+	int m_key[Title::kKeyMax];
 	// タイトル画面のキャラクター１
 	int m_hChar1;
 	// タイトル画面のキャラクター２
