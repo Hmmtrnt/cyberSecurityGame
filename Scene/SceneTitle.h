@@ -23,7 +23,7 @@ public:
 	virtual void draw() override;
 private:
 	// キーボードの入力状態
-	int m_key[256];
+	int m_key[keyMax];
 	// タイトル画面のキャラクター１
 	int m_hChar1;
 	// タイトル画面のキャラクター２

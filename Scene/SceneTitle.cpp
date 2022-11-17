@@ -49,6 +49,10 @@ SceneTitle::SceneTitle() :
 	m_fadeBright(0),
 	m_fadeSpeed(0)
 {
+	for (int i = 0; i < keyMax; i++)
+	{
+		m_key[i] = 0;
+	}
 }
 
 void SceneTitle::init()

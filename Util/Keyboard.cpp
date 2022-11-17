@@ -3,16 +3,17 @@
 
 namespace
 {
-	int key[256];
+	constexpr int kKeyMax = 256;
 }
 
 namespace Key
 {
+	int key[kKeyMax];
 	void inputKey()
 	{
-		static char buf[256];
+		static char buf[kKeyMax];
 		GetHitKeyStateAll(buf);
-		for (int i = 0; i < 256; i++)
+		for (int i = 0; i < kKeyMax; i++)
 		{
 			if (buf[i])
 			{
