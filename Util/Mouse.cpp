@@ -31,6 +31,7 @@ void Mouse::init()
 
 void Mouse::end()
 {
+	m_button = 0;
 	m_logType = 0;
 }
 

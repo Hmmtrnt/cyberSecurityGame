@@ -10,9 +10,11 @@
 namespace
 {
 	// 色
-	const int kColorG = GetColor(200, 200, 200);	// 灰色
 	const int kColorB = GetColor(0, 0, 0);			// 黒
 	const int kColorR = GetColor(255, 0, 0);		// 赤
+	// 残り回数の座標
+	constexpr int kFontPosX = 15;
+	constexpr int kFontPosY = 400;
 	// フェード関連
 	constexpr int kFadeBright = 0;	// 処理
 	constexpr int kFadeSpeed = 7;	// 速度
