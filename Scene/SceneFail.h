@@ -7,7 +7,6 @@ public:
 	SceneFail();
 	virtual ~SceneFail() {}
 
-
 	virtual void init() override;
 	virtual void end() override;
 

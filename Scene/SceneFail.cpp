@@ -73,11 +73,6 @@ SceneBase* SceneFail::update()
 			m_fadeSpeed = -kFadeSpeed;
 		}
 	}
-	/*inputKey(key);
-	if (key[KEY_INPUT_SPACE] == 1)
-	{
-		return (new SceneTitle);
-	}*/
 	return this;
 }
 
