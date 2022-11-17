@@ -16,7 +16,7 @@ public:
 	int getSizeY() const { return m_drawY + 2; }	// サイズ
 
 protected:
-	// 押されたり離され足りするボタンの値
+	// 押されたり離されたりするボタンの値
 	int m_button;
 	// クリックした座標
 	int m_clickX;	// X
