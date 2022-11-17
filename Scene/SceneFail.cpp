@@ -23,6 +23,7 @@ namespace
 SceneFail::SceneFail() :
 	m_fadeBright(0),
 	m_fadeSpeed(0),
+	m_hBackGround(-1),
 	m_fontHandle(-1),
 	m_textBlinkFrame(0)
 {
@@ -32,6 +33,7 @@ void SceneFail::init()
 {
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
+	m_hBackGround = LoadGraph("data/SceneFail.png");	// 背景のグラフィックハンドル
 	m_fontHandle = CreateFontToHandle("BIZ UDPゴシック", 30, 4);
 }
 
@@ -83,9 +85,9 @@ void SceneFail::draw()
 {
 	// 描画の輝度
 	SetDrawBright(m_fadeBright, m_fadeBright, m_fadeBright);
-	DrawString(0, 0, "失敗画面", GetColor(255, 255, 255));
+	DrawGraph(0, 0, m_hBackGround, true);
 	if (m_textBlinkFrame < kTextDispFrame)
 	{
-		DrawStringToHandle(kFontGuideWidth, kFontGuideHeight, kGuideText, kColorW, m_fontHandle);
+		DrawStringToHandle(kFontGuideWidth, kFontGuideHeight, kGuideText, kColorB, m_fontHandle);
 	}
 }

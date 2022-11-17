@@ -20,6 +20,8 @@ private:
 	int m_fadeBright;
 	// フェード速度
 	int m_fadeSpeed;
+	// 背景のグラフィックハンドル
+	int m_hBackGround;
 	// フォントのハンドル
 	int m_fontHandle;
 	// テキスト点滅用フレームカウント
