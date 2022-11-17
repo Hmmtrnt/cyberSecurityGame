@@ -1,9 +1,6 @@
 #pragma once
 #include "SceneBase.h"
-//#include "Box.h"
-//#include "Mouse.h"
 
-//class SceneBase;
 class Box;
 class Mouse;
 class Vec2;
