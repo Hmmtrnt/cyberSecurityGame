@@ -25,6 +25,8 @@ public:
 	// 当たり判定
 	bool CheckHit(Vec2* pos, Vec2* size, int mousePosX, int mousePosY, int mouseSizeX, int mouseSizeY);
 
+	int GetPushNum() const { return m_pushNum; }
+
 protected:
 	// キーボードの入力状態
 	int m_key[256];

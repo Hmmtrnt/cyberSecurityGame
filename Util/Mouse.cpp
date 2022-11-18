@@ -37,15 +37,18 @@ void Mouse::end()
 
 void Mouse::update(int& pushNum)
 {
+	/*if (pushNum <= 3)
+	{
+		pushNum = 3;
+	}*/
 	// マウスのボタンが押されたり離されたりしたかどうかの情報を取得する
 	if (GetMouseInputLog2(&m_button, &m_clickX, &m_clickY, &m_logType, TRUE) == 0)
 	{
 		// 左ボタンが押されたり離されたりしていたら処理するかどうかのフラグを立てて、座標も保存する
 		if ((m_button & MOUSE_INPUT_LEFT) != 0)
 		{
-			m_drawFlag = TRUE;
-			m_drawX = m_clickX;
-			m_drawY = m_clickY;
+			
+			
 			// 押した回数
 			if (m_logType == MOUSE_INPUT_LOG_DOWN)
 			{
@@ -54,11 +57,21 @@ void Mouse::update(int& pushNum)
 				{
 					pushNum = 0;
 				}
+				m_drawX = m_clickX;
+				m_drawY = m_clickY;
 			}
 			else if (m_logType == MOUSE_INPUT_LOG_UP)
 			{
 				return;
 			}
 		}
+	}
+}
+
+void Mouse::reset(int pushNum)
+{
+	if (pushNum <= 3)
+	{
+		pushNum = 3;
 	}
 }

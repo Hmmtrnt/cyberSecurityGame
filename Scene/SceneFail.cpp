@@ -1,11 +1,12 @@
 #include "SceneFail.h"
 #include "SceneTitle.h"
+#include "SceneMain.h"
 #include "DxLib.h"
 
 namespace
 {
 	// 表示するテキスト
-	const char* const kGuideText = "スペースキーを押してタイトルへ";
+	const char* const kGuideText = "スペースキーを押してタイトルへ\n\nエンターキーを押してリトライ";
 	// フェード関連
 	constexpr int kFadeBright = 0;	// 処理
 	constexpr int kFadeSpeed = 7;	// 速度
@@ -17,7 +18,7 @@ namespace
 	const int kColorW = GetColor(255, 255, 255);	// 白
 	// ガイドフォントの位置
 	constexpr int kFontGuideWidth = 280;
-	constexpr int kFontGuideHeight = 500;
+	constexpr int kFontGuideHeight = 480;
 }
 
 SceneFail::SceneFail() :
@@ -51,10 +52,15 @@ SceneBase* SceneFail::update()
 		m_fadeBright = 255;
 		m_fadeSpeed = 0;
 	}
-	if ((m_fadeBright <= 0) && (m_fadeSpeed < 0))
+	if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && m_key[KEY_INPUT_SPACE] == 1)
 	{
 		m_fadeBright = 0;
 		return (new SceneTitle);
+	}
+	else if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && m_key[KEY_INPUT_RETURN] == 1)
+	{
+		m_fadeBright = 0;
+		return (new SceneMain);
 	}
 
 	// テキストの点滅
@@ -69,6 +75,10 @@ SceneBase* SceneFail::update()
 		// フェードアウト開始
 		inputKey(m_key);
 		if (m_key[KEY_INPUT_SPACE] == 1)
+		{
+			m_fadeSpeed = -kFadeSpeed;
+		}
+		if (m_key[KEY_INPUT_RETURN] == 1)
 		{
 			m_fadeSpeed = -kFadeSpeed;
 		}

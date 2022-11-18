@@ -9,6 +9,7 @@ public:
 	virtual void init();
 	virtual void end();
 	virtual void update(int& pushNum);
+	virtual void reset(int pushNum);
 
 	int getPosX() const { return m_drawX - 2; }		// À•W
 	int getPosY() const { return m_drawY - 2; }		// À•W
