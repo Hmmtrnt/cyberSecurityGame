@@ -29,7 +29,7 @@ SceneResult::SceneResult() :
 {
 	for (int i = 0; i < Result::kKeyMax; i++)
 	{
-		m_key[i];
+		m_key[i] = -1;
 	}
 }
 

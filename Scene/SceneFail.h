@@ -1,6 +1,11 @@
 #pragma once
 #include "SceneBase.h"
 
+namespace Fail
+{
+	constexpr int kKeyMax = 256;
+}
+
 class SceneFail : public SceneBase
 {
 public:
@@ -14,7 +19,7 @@ public:
 	virtual void draw() override;
 private:
 	// キーボードの入力状態
-	int m_key[256];
+	int m_key[Fail::kKeyMax];
 	// フェード処理
 	int m_fadeBright;
 	// フェード速度

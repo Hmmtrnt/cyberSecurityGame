@@ -73,7 +73,10 @@ SceneExplanation::SceneExplanation() :
 	m_fadeBright(0),
 	m_fadeSpeed(0)
 {
-
+	for (int i = 0; i < Explanation::kKeyMax; i++)
+	{
+		m_key[i] = -1;
+	}
 }
 
 void SceneExplanation::init()

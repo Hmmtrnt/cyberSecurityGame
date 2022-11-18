@@ -2,6 +2,11 @@
 #include "SceneBase.h"
 #include <vector>
 
+namespace Explanation
+{
+	constexpr int kKeyMax = 256;
+}
+
 class SceneExplanation : public SceneBase
 {
 public:
@@ -16,7 +21,7 @@ public:
 	virtual void draw() override;
 private:
 	// キーボードの入力状態
-	int m_key[256];
+	int m_key[Explanation::kKeyMax];
 	// フォントのハンドル
 	int m_fontHandle;
 	// キャラクターのハンドル

@@ -51,7 +51,7 @@ SceneTitle::SceneTitle() :
 {
 	for (int i = 0; i < Title::kKeyMax; i++)
 	{
-		m_key[i];
+		m_key[i] = -1;
 	}
 }
 

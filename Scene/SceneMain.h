@@ -28,8 +28,6 @@ public:
 	int GetPushNum() const { return m_pushNum; }
 
 protected:
-	// キーボードの入力状態
-	int m_key[256];
 	// 背景のハンドル
 	int m_hBackGround;
 	// フォントのハンドル

@@ -28,6 +28,10 @@ SceneFail::SceneFail() :
 	m_fontHandle(-1),
 	m_textBlinkFrame(0)
 {
+	for (int i = 0; i < Fail::kKeyMax; i++)
+	{
+		m_key[i] = -1;
+	}
 }
 
 void SceneFail::init()
