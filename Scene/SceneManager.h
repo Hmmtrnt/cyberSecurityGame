@@ -12,6 +12,8 @@ public:
 	void update();
 	void draw();
 
-private:
+	//SceneBase* GetScene() { return m_pScene; }
 	SceneBase* m_pScene;
+
+protected:
 };

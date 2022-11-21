@@ -1,5 +1,11 @@
 #include "Mouse.h"
 #include "DxLib.h"
+#include "SceneBase.h"
+#include "SceneTitle.h"
+#include "SceneMain.h"
+#include "SceneExplanation.h"
+#include "SceneResult.h"
+#include "SceneFail.h"
 
 Mouse::Mouse() :
 	m_button(0),
@@ -9,12 +15,15 @@ Mouse::Mouse() :
 	m_drawFlag(false),
 	m_drawX(0),
 	m_drawY(0),
-	m_drawColor(0)
+	m_drawColor(0),
+	sceneManager(nullptr)
 {
+	sceneManager = new SceneManager;
 }
 
 Mouse::~Mouse()
 {
+	delete sceneManager;
 }
 
 void Mouse::init()
@@ -37,10 +46,8 @@ void Mouse::end()
 
 void Mouse::update(int& pushNum)
 {
-	/*if (pushNum <= 3)
-	{
-		pushNum = 3;
-	}*/
+	//if (sceneManager->m_pScene != new SceneMain) return;
+
 	// マウスのボタンが押されたり離されたりしたかどうかの情報を取得する
 	if (GetMouseInputLog2(&m_button, &m_clickX, &m_clickY, &m_logType, TRUE) == 0)
 	{

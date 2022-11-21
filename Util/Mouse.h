@@ -1,4 +1,6 @@
 #pragma once
+#include "SceneManager.h"
+class SceneManager;
 
 class Mouse
 {
@@ -31,4 +33,6 @@ protected:
 	int	m_drawY;	// Y
 	// •`‰æF
 	int m_drawColor;
+
+	SceneManager* sceneManager;
 };
