@@ -1,7 +1,6 @@
 #include "SceneTitle.h"
 #include "DxLib.h"
 #include "game.h"
-#include "Mouse.h"
 #include "SceneMain.h"
 #include "SceneExplanation.h"
 

@@ -1,11 +1,6 @@
 #include "Mouse.h"
 #include "DxLib.h"
-#include "SceneBase.h"
-#include "SceneTitle.h"
 #include "SceneMain.h"
-#include "SceneExplanation.h"
-#include "SceneResult.h"
-#include "SceneFail.h"
 
 Mouse::Mouse() :
 	m_button(0),
@@ -46,16 +41,12 @@ void Mouse::end()
 
 void Mouse::update(int& pushNum)
 {
-	//if (sceneManager->m_pScene != new SceneMain) return;
-
 	// マウスのボタンが押されたり離されたりしたかどうかの情報を取得する
 	if (GetMouseInputLog2(&m_button, &m_clickX, &m_clickY, &m_logType, TRUE) == 0)
 	{
 		// 左ボタンが押されたり離されたりしていたら処理するかどうかのフラグを立てて、座標も保存する
 		if ((m_button & MOUSE_INPUT_LEFT) != 0)
-		{
-			
-			
+		{			
 			// 押した回数
 			if (m_logType == MOUSE_INPUT_LOG_DOWN)
 			{
