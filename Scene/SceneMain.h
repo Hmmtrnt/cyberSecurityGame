@@ -2,7 +2,6 @@
 #include "SceneBase.h"
 
 class Box;
-class Mouse;
 class Vec2;
 
 class SceneMain : public SceneBase
@@ -40,5 +39,5 @@ protected:
 	int m_pushNum;
 
 	Box* m_box;
-	Mouse* m_mouse;
+	
 };

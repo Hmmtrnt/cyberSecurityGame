@@ -26,17 +26,14 @@ SceneMain::SceneMain() :
 	m_fadeBright(0),
 	m_fadeSpeed(0),
 	m_pushNum(0),
-	m_box(nullptr),
-	m_mouse(nullptr)
+	m_box(nullptr)
 {
 	m_box = new Box;
-	m_mouse = new Mouse;
 }
 
 SceneMain::~SceneMain()
 {
 	delete m_box;
-	delete m_mouse;
 }
 
 void SceneMain::init()
@@ -47,19 +44,16 @@ void SceneMain::init()
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
 	m_pushNum = 3;
 	m_box->init();
-	m_mouse->init();
 }
 
 void SceneMain::end()
 {
 	DeleteGraph(m_hBackGround);
 	DeleteFontToHandle(m_fontHandle);
-	m_mouse->end();
 }
 
 SceneBase* SceneMain::update()
 {
-	m_mouse->update(m_pushNum);
 	m_fadeBright += m_fadeSpeed;
 	if (m_fadeBright >= 255)
 	{
