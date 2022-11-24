@@ -11,6 +11,9 @@ namespace
 Box::Box() :
 	m_pos(),
 	m_size(),
+	m_mouseX(0),
+	m_mouseY(0),
+	m_MouseInput(0),
 	m_isTouch(false)
 {
 	m_pos = new Vec2;
@@ -29,7 +32,7 @@ void Box::init()
 	m_pos->y = 40;		// Y座標
 	m_size->x = 445;	// X座標サイズ
 	m_size->y = 50;		// Y座標サイズ
-	Vec2 mousePos = Mouse::getPos();
+	m_MouseInput = GetMouseInput();
 }
 
 void end()
@@ -39,10 +42,15 @@ void end()
 
 void Box::update()
 {
-
+	GetMousePoint(&m_mouseX, &m_mouseY);
 }
 
 bool Box::isTouchEnable(Vec2 pos)
 {
-	if ()
+	if (m_mouseX > m_pos->x && m_mouseX < m_pos->x + m_size->x &&
+		m_mouseY > m_pos->y && m_mouseY < m_pos->y + m_size->y &&
+		(m_MouseInput & MOUSE_INPUT_LEFT) == 0)
+	{
+		return true;
+	}
 }

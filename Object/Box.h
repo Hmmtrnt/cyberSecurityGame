@@ -29,6 +29,13 @@ protected:
 	Vec2* m_pos;
 	// ボックスのサイズ
 	Vec2* m_size;
+	
+	// マウスの座標
+	int m_mouseX;
+	int m_mouseY;
+	// マウスの入力状態
+	int m_MouseInput;
+
 	// クリックされたかどうか
 	bool m_isTouch;
 };
