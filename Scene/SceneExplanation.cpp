@@ -9,7 +9,7 @@ namespace
 	const char* const kText1 = "ある日、突然メールが来た。";
 	const char* const kText2 = "私「動画見放題？何も知らないけど」";
 	const char* const kText3 = "このメールは詐欺メールである、";
-	const char* const kText4 = "どこが見分けるポイントか探そう";
+	const char* const kText4 = "どこで見分けるかクリックして探そう";
 	const char* const kText5 = "チャンスは３回だ!";
 	const char* const kText6 = "ご入会ありがとうございます！";
 	const char* const kText7 = "動画見放題プラン";
