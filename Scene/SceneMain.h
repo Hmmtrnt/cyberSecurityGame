@@ -1,3 +1,4 @@
+// メイン画面
 #pragma once
 #include "SceneBase.h"
 
@@ -10,40 +11,31 @@ public:
 	SceneMain();
 	virtual ~SceneMain();
 
-	// 初期化
+	// 初期化処理
 	virtual void init();
-	// 修了
+	// 終了処理
 	virtual void end();
-
 	// 更新処理
 	virtual SceneBase* update();
-
-	// 描画
+	// 描画処理
 	virtual void draw();
 
-	// 当たり判定
-	//bool CheckHit();
-
-	int GetPushNum() const { return m_pushNum; }
-
 protected:
-	// 背景のハンドル
-	int m_hBackGround;
-	// フォントのハンドル
-	int m_fontHandle;
-	// フェード処理
-	int m_fadeBright;
-	// フェード速度
-	int m_fadeSpeed;
+	// ハンドル
+	int m_hBackGround;		// 背景
+	int m_fontHandle;		// フォント
+	// フェード
+	int m_fadeBright;		// 処理
+	int m_fadeSpeed;		// 速度
 	// 残りのプッシュ出来る回数
 	int m_pushNum;
 	// マウスの座標
 	int m_mouseX;
 	int m_mouseY;
-//	Vec2* m_mouse;
 
 	// 押された瞬間のフレーム
 	int m_pushFlame;
 
+	// 当たり判定のポインタ
 	Box* m_box;
 };

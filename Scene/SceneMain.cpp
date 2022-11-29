@@ -2,10 +2,8 @@
 #include "SceneResult.h"
 #include "SceneFail.h"
 #include "DxLib.h"
-#include "game.h"
 #include "Mouse.h"
 #include "Box.h"
-#include "Mouse.h"
 
 namespace
 {
@@ -13,8 +11,8 @@ namespace
 	const int kColorB = GetColor(0, 0, 0);			// 黒
 	const int kColorR = GetColor(255, 0, 0);		// 赤
 	// 残り回数の座標
-	constexpr int kFontPosX = 15;
-	constexpr int kFontPosY = 400;
+	constexpr int kFontPosX = 15;	// X座標
+	constexpr int kFontPosY = 400;	// Y座標
 	// フェード関連
 	constexpr int kFadeBright = 0;	// 処理
 	constexpr int kFadeSpeed = 7;	// 速度
@@ -31,45 +29,51 @@ SceneMain::SceneMain() :
 	m_pushFlame(0),
 	m_box(nullptr)
 {
+	// メモリの取得
 	m_box = new Box;
 }
 
 SceneMain::~SceneMain()
 {
+	// メモリの開放
 	delete m_box;
 }
 
+// 初期化処理
 void SceneMain::init()
 {
-	m_hBackGround = LoadGraph("data/SceneMain.png");
-	m_fontHandle = CreateFontToHandle("BIZ UDPゴシック", 100, 4);
-	m_fadeBright = kFadeBright;	// フェード処理
-	m_fadeSpeed = kFadeSpeed;	// フェード速度
-	m_pushNum = 3;
+	m_hBackGround = LoadGraph("data/SceneMain.png");				// 背景
+	m_fontHandle = CreateFontToHandle("BIZ UDPゴシック", 100, 4);	// フォント
+	m_fadeBright = kFadeBright;										// フェード処理
+	m_fadeSpeed = kFadeSpeed;										// フェード速度
+	m_pushNum = 3;													// 押せる回数
 	m_box->init();
 }
 
+// 終了処理
 void SceneMain::end()
 {
 	DeleteGraph(m_hBackGround);
 	DeleteFontToHandle(m_fontHandle);
 }
 
+// 更新処理
 SceneBase* SceneMain::update()
-{
-	Vec2 mousePos = Mouse::getPos();
-	
+{	
+	// フェード処理
 	m_fadeBright += m_fadeSpeed;
 	if (m_fadeBright >= 255)
 	{
 		m_fadeBright = 255;
 		m_fadeSpeed = 0;
 	}
-	if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && (m_pushNum <= 0)/*&& m_box->isTouchEnable()*/)
+	// ゲームオーバー
+	if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && (m_pushNum <= 0))
 	{
 		m_fadeBright = 0;
 		return (new SceneFail);
 	}
+	// ゲームクリア
 	else if ((m_fadeBright <= 0) && (m_fadeSpeed < 0))
 	{
 		m_fadeBright = 0;
@@ -80,12 +84,10 @@ SceneBase* SceneMain::update()
 		// フェードアウト開始
 		if (m_box->isTouchEnable())
 		{
-			//DrawString(0, 0, "押された", GetColor(0, 0, 0), true);
 			m_fadeSpeed = -kFadeSpeed;
 		}
 		else if (m_pushNum <= 0)
 		{
-			//DrawString(0, 0, "失敗", GetColor(0, 0, 0), true);
 			m_fadeSpeed = -kFadeSpeed;
 		}
 	}
@@ -104,30 +106,9 @@ void SceneMain::draw()
 	{
 		DrawFormatStringToHandle(15, 400, kColorB, m_fontHandle, "後%d回", m_pushNum);
 	}
+	// 残り回数が一回でフォントが赤になる
 	else if (m_pushNum <= 1)
 	{
 		DrawFormatStringToHandle(15, 400, kColorR, m_fontHandle, "後%d回", m_pushNum);
 	}
 }
-//
-//bool SceneMain::CheckHit()
-//{
-//	GetMousePoint(&m_mouseX, &m_mouseY);
-//	if (m_mouseX > m_box->getPos() && m_mouseX < m_box->getPos() + m_box->getSize() &&
-//		m_mouseY > m_box->getPos() && m_mouseY < m_box->getPos() + m_box->getSize() &&
-//		(GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
-//	{
-//		if (m_pushFlame == 0)
-//		{
-//			m_pushFlame = 1;
-//			if (m_pushFlame == 1)
-//			{
-//				return true;
-//			}
-//		}
-//	}
-//	else
-//	{
-//		return false;
-//	}
-//}
