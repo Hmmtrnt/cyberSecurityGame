@@ -34,19 +34,25 @@ SceneFail::SceneFail() :
 	}
 }
 
+SceneFail::~SceneFail()
+{
+}
+
+// 初期化処理
 void SceneFail::init()
 {
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
-	m_hBackGround = LoadGraph("data/SceneFail.png");	// 背景のグラフィックハンドル
-	m_fontHandle = CreateFontToHandle("BIZ UDPゴシック", 30, 4);
+	m_hBackGround = LoadGraph("data/SceneFail.png");				// 背景のグラフィックハンドル
+	m_fontHandle = CreateFontToHandle("BIZ UDPゴシック", 30, 4);	// フォントのハンドル
 }
 
+// 終了処理
 void SceneFail::end()
 {
-
 }
 
+// 更新処理
 SceneBase* SceneFail::update()
 {
 	// フェードアウト処理
@@ -56,11 +62,13 @@ SceneBase* SceneFail::update()
 		m_fadeBright = 255;
 		m_fadeSpeed = 0;
 	}
+	// タイトル遷移
 	if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && m_key[KEY_INPUT_SPACE] == 1)
 	{
 		m_fadeBright = 0;
 		return (new SceneTitle);
 	}
+	// リトライ機能
 	else if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && m_key[KEY_INPUT_RETURN] == 1)
 	{
 		m_fadeBright = 0;
@@ -95,6 +103,7 @@ void SceneFail::draw()
 	// 描画の輝度
 	SetDrawBright(m_fadeBright, m_fadeBright, m_fadeBright);
 	DrawGraph(0, 0, m_hBackGround, true);
+	// テキストの点滅
 	if (m_textBlinkFrame < kTextDispFrame)
 	{
 		DrawStringToHandle(kFontGuideWidth, kFontGuideHeight, kGuideText, kColorB, m_fontHandle);
