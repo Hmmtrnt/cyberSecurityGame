@@ -1,7 +1,6 @@
 #include "SceneTitle.h"
 #include "DxLib.h"
 #include "game.h"
-#include "SceneMain.h"
 #include "SceneExplanation.h"
 
 namespace
@@ -42,7 +41,7 @@ namespace
 SceneTitle::SceneTitle() :
 	m_hChar1(-1),
 	m_hChar2(-1),
-	m_fontHandle(-1),
+	m_fontHandle1(-1),
 	m_fontHandle2(-1),
 	m_textBlinkFrame(0),
 	m_fadeBright(0),
@@ -54,26 +53,33 @@ SceneTitle::SceneTitle() :
 	}
 }
 
+SceneTitle::~SceneTitle()
+{
+}
+
+// 初期化処理
 void SceneTitle::init()
 {
-	m_hChar1 = LoadGraph("data/TitleCharWaru_1.png");
-	m_hChar2 = LoadGraph("data/TitleCharOdoroki1.png");
-	m_fontHandle = CreateFontToHandle(NULL, 56, 4);
-	m_fontHandle2 = CreateFontToHandle(NULL, 30, 4);
+	m_hChar1 = LoadGraph("data/TitleCharWaru_1.png");		// キャラクター１
+	m_hChar2 = LoadGraph("data/TitleCharOdoroki1.png");		// キャラクター２
+	m_fontHandle1 = CreateFontToHandle(NULL, 56, 4);			// フォント１
+	m_fontHandle2 = CreateFontToHandle(NULL, 30, 4);		// フォント２
 	m_textBlinkFrame = 0;
 	m_fadeBright = kFadeBright;	// フェード処理
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
 }
 
+// 終了処理
 void SceneTitle::end()
 {
 	DeleteGraph(m_hChar1);
 	DeleteGraph(m_hChar2);
-	DeleteFontToHandle(m_fontHandle);
+	DeleteFontToHandle(m_fontHandle1);
 	DeleteFontToHandle(m_fontHandle2);
 	SetDrawBright(255, 255, 255);
 }
 
+// 更新処理
 SceneBase* SceneTitle::update()
 {
 	// フェードアウト処理
@@ -108,6 +114,7 @@ SceneBase* SceneTitle::update()
 	return this;
 }
 
+// 描画処理
 void SceneTitle::draw()
 {
 	// 描画の輝度
@@ -119,7 +126,8 @@ void SceneTitle::draw()
 	// 悪そうなキャラ
 	DrawExtendGraph(kCharWidth1, kCharHeight1, kCharWidth1 + kCharSizeWidth1, kCharHeight1 + kCharSizeHeight1, m_hChar1, true);
 	// 文字列
-	DrawStringToHandle(kFontWidth, kFontHeight, kTitleText, kFontColor, m_fontHandle);
+	DrawStringToHandle(kFontWidth, kFontHeight, kTitleText, kFontColor, m_fontHandle1);
+	// 点滅処理
 	if (m_textBlinkFrame < kTextDispFrame)
 	{
 		DrawStringToHandle(kFontGuideWidth, kFontGuideHeight, kGuideText, kFontColor, m_fontHandle2);
