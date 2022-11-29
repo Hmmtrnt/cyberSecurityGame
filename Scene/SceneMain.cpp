@@ -58,22 +58,22 @@ void SceneMain::end()
 SceneBase* SceneMain::update()
 {
 	Vec2 mousePos = Mouse::getPos();
-	m_box->update(m_pushNum);
+	
 	m_fadeBright += m_fadeSpeed;
 	if (m_fadeBright >= 255)
 	{
 		m_fadeBright = 255;
 		m_fadeSpeed = 0;
 	}
-	if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && m_box->isTouchEnable())
-	{
-		m_fadeBright = 0;
-		return (new SceneResult);
-	}
-	else if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && (m_pushNum <= 0))
+	if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && (m_pushNum <= 0)/*&& m_box->isTouchEnable()*/)
 	{
 		m_fadeBright = 0;
 		return (new SceneFail);
+	}
+	else if ((m_fadeBright <= 0) && (m_fadeSpeed < 0))
+	{
+		m_fadeBright = 0;
+		return (new SceneResult);
 	}
 	if (m_fadeSpeed == 0)
 	{
@@ -89,6 +89,7 @@ SceneBase* SceneMain::update()
 			m_fadeSpeed = -kFadeSpeed;
 		}
 	}
+	m_box->update(m_pushNum);
 	return this;
 }
 

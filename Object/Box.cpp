@@ -43,8 +43,8 @@ void Box::update(int& pushNum)
 {
 	GetMousePoint(&m_mouseX, &m_mouseY);
 
-	if (m_mouseX <= m_pos.x && m_mouseX >= m_pos.x + m_size.x &&
-		m_mouseY <= m_pos.y && m_mouseY >= m_pos.y + m_size.y && 
+	if (/*m_mouseX <= m_pos.x && m_mouseX >= m_pos.x + m_size.x &&
+		m_mouseY <= m_pos.y && m_mouseY >= m_pos.y + m_size.y &&*/
 		(GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
 	{
 		if (m_pushFlame == 0)
