@@ -10,17 +10,19 @@ SceneManager::SceneManager()
 {
 	m_pScene = nullptr;
 }
+
 SceneManager::~SceneManager()
 {
-
 }
 
+// 初期化処理
 void SceneManager::init()
 {
 	m_pScene = new SceneTitle;
 	m_pScene->init();
 }
 
+// 終了処理
 void SceneManager::end()
 {
 	assert(m_pScene);
@@ -30,6 +32,7 @@ void SceneManager::end()
 	delete m_pScene;
 }
 
+// 更新処理
 void SceneManager::update()
 {
 	assert(m_pScene);
@@ -41,12 +44,13 @@ void SceneManager::update()
 		// 前のシーンの終了処理
 		m_pScene->end();
 		delete m_pScene;
-
+		// 次のシーンの初期化
 		m_pScene = pScene;
 		m_pScene->init();
 	}
 }
 
+// 描画処理
 void SceneManager::draw()
 {
 	assert(m_pScene);
