@@ -22,7 +22,7 @@ public:
 	virtual void draw();
 
 	// 当たり判定
-	bool CheckHit(Vec2* pos, Vec2* size, int mousePosX, int mousePosY, int mouseSizeX, int mouseSizeY);
+	//bool CheckHit();
 
 	int GetPushNum() const { return m_pushNum; }
 
@@ -37,7 +37,13 @@ protected:
 	int m_fadeSpeed;
 	// 残りのプッシュ出来る回数
 	int m_pushNum;
+	// マウスの座標
+	int m_mouseX;
+	int m_mouseY;
+//	Vec2* m_mouse;
+
+	// 押された瞬間のフレーム
+	int m_pushFlame;
 
 	Box* m_box;
-	
 };

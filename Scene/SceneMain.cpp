@@ -3,7 +3,7 @@
 #include "SceneFail.h"
 #include "DxLib.h"
 #include "game.h"
-#include "mouse.h"
+#include "Mouse.h"
 #include "Box.h"
 #include "Mouse.h"
 
@@ -26,6 +26,9 @@ SceneMain::SceneMain() :
 	m_fadeBright(0),
 	m_fadeSpeed(0),
 	m_pushNum(0),
+	m_mouseX(0),
+	m_mouseY(0),
+	m_pushFlame(0),
 	m_box(nullptr)
 {
 	m_box = new Box;
@@ -54,14 +57,15 @@ void SceneMain::end()
 
 SceneBase* SceneMain::update()
 {
+	Vec2 mousePos = Mouse::getPos();
+	m_box->update(m_pushNum);
 	m_fadeBright += m_fadeSpeed;
 	if (m_fadeBright >= 255)
 	{
 		m_fadeBright = 255;
 		m_fadeSpeed = 0;
 	}
-	if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && 
-		(CheckHit(m_box->getPos(), m_box->getSize(), m_mouse->getPosX(), m_mouse->getPosY(), m_mouse->getSizeX(), m_mouse->getSizeY())))
+	if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && m_box->isTouchEnable())
 	{
 		m_fadeBright = 0;
 		return (new SceneResult);
@@ -74,7 +78,7 @@ SceneBase* SceneMain::update()
 	if (m_fadeSpeed == 0)
 	{
 		// フェードアウト開始
-		if (CheckHit(m_box->getPos(), m_box->getSize(), m_mouse->getPosX(), m_mouse->getPosY(), m_mouse->getSizeX(), m_mouse->getSizeY()))
+		if (m_box->isTouchEnable())
 		{
 			//DrawString(0, 0, "押された", GetColor(0, 0, 0), true);
 			m_fadeSpeed = -kFadeSpeed;
@@ -103,16 +107,27 @@ void SceneMain::draw()
 	{
 		DrawFormatStringToHandle(15, 400, kColorR, m_fontHandle, "後%d回", m_pushNum);
 	}
+	m_box->draw();
 }
-
-bool SceneMain::CheckHit(Vec2* pos, Vec2* size, int m_mousePosX, int m_mousePosY, int m_mouseSizeX, int m_mouseSizeY)
-{
-	if ((pos->x + size->x > m_mousePosX) && (pos->x < m_mouseSizeX))
-	{
-		if ((pos->y + size->y > m_mousePosY) && (pos->y < m_mousePosY))
-		{
-			return true;
-		}
-	}
-	return false;
-}
+//
+//bool SceneMain::CheckHit()
+//{
+//	GetMousePoint(&m_mouseX, &m_mouseY);
+//	if (m_mouseX > m_box->getPos() && m_mouseX < m_box->getPos() + m_box->getSize() &&
+//		m_mouseY > m_box->getPos() && m_mouseY < m_box->getPos() + m_box->getSize() &&
+//		(GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
+//	{
+//		if (m_pushFlame == 0)
+//		{
+//			m_pushFlame = 1;
+//			if (m_pushFlame == 1)
+//			{
+//				return true;
+//			}
+//		}
+//	}
+//	else
+//	{
+//		return false;
+//	}
+//}
