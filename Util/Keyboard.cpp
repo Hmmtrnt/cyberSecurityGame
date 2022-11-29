@@ -8,6 +8,7 @@ namespace
 
 namespace Key
 {
+	// ０：入力されていない、１：入力された瞬間、２：入力されている
 	int key[kKeyMax];
 	void inputKey()
 	{
