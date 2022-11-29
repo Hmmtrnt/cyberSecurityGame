@@ -79,6 +79,11 @@ SceneExplanation::SceneExplanation() :
 	}
 }
 
+SceneExplanation::~SceneExplanation()
+{
+}
+
+// 初期化処理
 void SceneExplanation::init()
 {
 	m_fontHandle = CreateFontToHandle("BIZ UDPゴシック", 30, 5);
@@ -89,6 +94,7 @@ void SceneExplanation::init()
 	m_fadeSpeed = kFadeSpeed;	// フェード速度
 }
 
+// 終了処理
 void SceneExplanation::end()
 {
 	DeleteFontToHandle(m_fontHandle);
@@ -98,6 +104,7 @@ void SceneExplanation::end()
 	SetDrawBright(255, 255, 255);
 }
 
+// 更新処理
 SceneBase* SceneExplanation::update()
 {
 	// フェードアウト処理
@@ -126,9 +133,6 @@ SceneBase* SceneExplanation::update()
 
 void SceneExplanation::draw()
 {
-//	ChangeFont("font/BIZ-UDGothicR.ttc");
-//	ChangeFont("ＭＳ 明朝");
-
 	// 描画の輝度
 	SetDrawBright(m_fadeBright, m_fadeBright, m_fadeBright);
 	// 背景

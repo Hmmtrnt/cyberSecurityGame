@@ -1,3 +1,4 @@
+// 説明画面
 #pragma once
 #include "SceneBase.h"
 #include <vector>
@@ -11,27 +12,25 @@ class SceneExplanation : public SceneBase
 {
 public:
 	SceneExplanation();
-	virtual ~SceneExplanation() {}
+	virtual ~SceneExplanation();
 
-
+	// 初期化処理
 	virtual void init() override;
+	// 終了処理
 	virtual void end() override;
-
+	// 更新処理
 	virtual SceneBase* update() override;
+	// 描画処理
 	virtual void draw() override;
 private:
 	// キーボードの入力状態
 	int m_key[Explanation::kKeyMax];
-	// フォントのハンドル
-	int m_fontHandle;
-	// キャラクターのハンドル
-	int m_hChar;
-	// オブジェクトのハンドル
-	int m_hObject;
-	// 吹き出しのハンドル
-	int m_hSpeechBubble;
-	// フェード処理
-	int m_fadeBright;
-	// フェード速度
-	int m_fadeSpeed;
+	// ハンドル
+	int m_fontHandle;		// フォント
+	int m_hChar;			// キャラクター
+	int m_hObject;			// オブジェクト
+	int m_hSpeechBubble;	// 吹き出し
+	// フェード
+	int m_fadeBright;		// 処理
+	int m_fadeSpeed;		// 速度
 };
