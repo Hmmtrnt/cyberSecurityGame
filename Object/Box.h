@@ -8,20 +8,13 @@ public:
 	Box();
 	~Box();
 
-	// 初期化
+	// 初期化処理
 	void init();
-	// 修了
-	void end();
-	// 処理
+	// 更新処理
 	void update(int& pushNum);
-	// 描画
-	void draw();
 
-
-	// クリックされたかどうか
+	// 答えとなる範囲をクリックしたかどうか
 	bool isTouchEnable();
-	// 自身がクリックされたかどうか
-	bool isTouch() const { return m_isTouch; }
 
 	// 情報取得
 	Vec2 getPos() const { return m_pos; }		// 座標
@@ -36,10 +29,9 @@ protected:
 	// マウスの座標
 	int m_mouseX;
 	int m_mouseY;
+	// 押された瞬間のフレーム
+	int m_pushFlame;
 
 	// クリックされたかどうか
 	bool m_isTouch;
-
-	// 押された瞬間のフレーム
-	int m_pushFlame;
 };

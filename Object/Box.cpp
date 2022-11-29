@@ -5,7 +5,7 @@
 namespace
 {
 	// 色
-	const int kColorB = GetColor(0, 0, 0);
+	const int kColorB = GetColor(0, 0, 0);	// 黒
 }
 
 Box::Box() :
@@ -15,15 +15,14 @@ Box::Box() :
 	m_mouseY(0),
 	m_isTouch(false),
 	m_pushFlame(0)
-{
-	
+{	
 }
 
 Box::~Box()
 {
-	
 }
 
+// 初期化処理
 void Box::init()
 {
 	m_pos.x = 320;		// X座標
@@ -34,22 +33,19 @@ void Box::init()
 	m_pushFlame = 0;//無限ループ外で宣言
 }
 
-void Box::end()
-{
-
-}
-
+// 更新処理
 void Box::update(int& pushNum)
 {
+	// マウスの座標取得
 	GetMousePoint(&m_mouseX, &m_mouseY);
 
-	if (/*m_mouseX <= m_pos.x && m_mouseX >= m_pos.x + m_size.x &&
-		m_mouseY <= m_pos.y && m_mouseY >= m_pos.y + m_size.y &&*/
-		(GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
+	// 答えの範囲外を押したとき
+	if ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
 	{
 		if (m_pushFlame == 0)
 		{
 			m_pushFlame = 1;
+			// 押された瞬間
 			if (m_pushFlame == 1)
 			{
 				pushNum--;
@@ -62,20 +58,17 @@ void Box::update(int& pushNum)
 	}
 	else
 	{
+		// フレームリセット
 		m_pushFlame = 0;
 	}
 }
 
-void Box::draw()
-{
-	GetMousePoint(&m_mouseX, &m_mouseY);
-	DrawFormatString(0, 0, GetColor(0, 0, 0), "%d, %d", m_mouseX, m_mouseY);
-	GetMousePoint(&m_mouseX, &m_mouseY);
-}
-
+// 答えとなる範囲をクリックしたかどうか
 bool Box::isTouchEnable()
 {
+	// マウスの座標取得
 	GetMousePoint(&m_mouseX, &m_mouseY);
+	// 答えの範囲をクリック
 	if (m_mouseX >= m_pos.x && m_mouseX <= m_pos.x + m_size.x &&
 		m_mouseY >= m_pos.y && m_mouseY <= m_pos.y + m_size.y &&
 		(GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
@@ -83,6 +76,7 @@ bool Box::isTouchEnable()
 		if (m_pushFlame == 0)
 		{
 			m_pushFlame = 1;
+			// 押された瞬間
 			if (m_pushFlame == 1)
 			{
 				return true;
