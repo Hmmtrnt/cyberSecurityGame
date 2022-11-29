@@ -11,7 +11,7 @@ public:
 	// 初期化処理
 	void init();
 	// 更新処理
-	void update(int& pushNum);
+	void update(int& pushNum, int& fadeBright);
 
 	// 答えとなる範囲をクリックしたかどうか
 	bool isTouchEnable();

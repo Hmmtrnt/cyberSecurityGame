@@ -89,7 +89,7 @@ SceneBase* SceneMain::update()
 			m_fadeSpeed = -kFadeSpeed;
 		}
 	}
-	m_box->update(m_pushNum);
+	m_box->update(m_pushNum, m_fadeBright);
 	return this;
 }
 
@@ -108,7 +108,6 @@ void SceneMain::draw()
 	{
 		DrawFormatStringToHandle(15, 400, kColorR, m_fontHandle, "Œã%d‰ñ", m_pushNum);
 	}
-	m_box->draw();
 }
 //
 //bool SceneMain::CheckHit()

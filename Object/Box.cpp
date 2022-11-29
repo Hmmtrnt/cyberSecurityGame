@@ -34,10 +34,12 @@ void Box::init()
 }
 
 // 更新処理
-void Box::update(int& pushNum)
+void Box::update(int& pushNum, int& fadeBright)
 {
 	// マウスの座標取得
 	GetMousePoint(&m_mouseX, &m_mouseY);
+
+	if (fadeBright < 255) return;
 
 	// 答えの範囲外を押したとき
 	if ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
