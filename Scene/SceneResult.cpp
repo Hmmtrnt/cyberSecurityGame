@@ -33,6 +33,7 @@ SceneResult::SceneResult() :
 	}
 }
 
+// 初期化処理
 void SceneResult::init()
 {
 	m_fadeBright = kFadeBright;								// フェード処理
@@ -41,12 +42,14 @@ void SceneResult::init()
 	m_fontHandle = CreateFontToHandle("BIZ UDPゴシック", 30, 4);
 }
 
+// 終了処理
 void SceneResult::end()
 {
 	DeleteGraph(m_hBackGround);
 	DeleteFontToHandle(m_fontHandle);
 }
 
+// 更新処理
 SceneBase* SceneResult::update()
 {
 	// フェードアウト処理
@@ -56,11 +59,13 @@ SceneBase* SceneResult::update()
 		m_fadeBright = 255;
 		m_fadeSpeed = 0;
 	}
+	// タイトル遷移
 	if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && m_key[KEY_INPUT_SPACE] == 1)
 	{
 		m_fadeBright = 0;
 		return (new SceneTitle);
 	}
+	// リトライ機能
 	else if ((m_fadeBright <= 0) && (m_fadeSpeed < 0) && m_key[KEY_INPUT_RETURN] == 1)
 	{
 		m_fadeBright = 0;
@@ -90,11 +95,13 @@ SceneBase* SceneResult::update()
 	return this;
 }
 
+// 描画処理
 void SceneResult::draw()
 {
 	// 描画の輝度
 	SetDrawBright(m_fadeBright, m_fadeBright, m_fadeBright);
 	DrawGraph(0, 0, m_hBackGround, true);
+	// 点滅処理
 	if (m_textBlinkFrame < kTextDispFrame)
 	{
 		DrawStringToHandle(kFontGuideWidth, kFontGuideHeight, kGuideText, kColorB, m_fontHandle);
