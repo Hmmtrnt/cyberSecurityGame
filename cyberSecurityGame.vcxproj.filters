@@ -60,9 +60,6 @@
     <ClCompile Include="Util\Keyboard.cpp">
       <Filter>ソース ファイル\Util</Filter>
     </ClCompile>
-    <ClCompile Include="Util\Mouse.cpp">
-      <Filter>ソース ファイル\Util</Filter>
-    </ClCompile>
     <ClCompile Include="Util\Vec2.cpp">
       <Filter>ソース ファイル\Util</Filter>
     </ClCompile>
@@ -96,9 +93,6 @@
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Util\Keyboard.h">
-      <Filter>ヘッダー ファイル\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Util\Mouse.h">
       <Filter>ヘッダー ファイル\Util</Filter>
     </ClInclude>
     <ClInclude Include="Util\Vec2.h">
