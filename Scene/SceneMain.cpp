@@ -2,7 +2,6 @@
 #include "SceneResult.h"
 #include "SceneFail.h"
 #include "DxLib.h"
-#include "Mouse.h"
 #include "Box.h"
 
 namespace
