@@ -1,6 +1,5 @@
 #include "DxLib.h"
 #include "Box.h"
-#include "Mouse.h"
 
 namespace
 {
@@ -44,17 +43,14 @@ void Box::update(int& pushNum, int& fadeBright)
 	// “š‚¦‚Ì”ÍˆÍŠO‚ğ‰Ÿ‚µ‚½‚Æ‚«
 	if ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
 	{
+		// ‰Ÿ‚³‚ê‚½uŠÔ
 		if (m_pushFlame == 0)
 		{
 			m_pushFlame = 1;
-			// ‰Ÿ‚³‚ê‚½uŠÔ
-			if (m_pushFlame == 1)
+			pushNum--;
+			if (pushNum <= 0)
 			{
-				pushNum--;
-				if (pushNum <= 0)
-				{
-					pushNum = 0;
-				}
+				pushNum = 0;
 			}
 		}
 	}
@@ -75,14 +71,11 @@ bool Box::isTouchEnable()
 		m_mouseY >= m_pos.y && m_mouseY <= m_pos.y + m_size.y &&
 		(GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
 	{
+		// ‰Ÿ‚³‚ê‚½uŠÔ
 		if (m_pushFlame == 0)
 		{
 			m_pushFlame = 1;
-			// ‰Ÿ‚³‚ê‚½uŠÔ
-			if (m_pushFlame == 1)
-			{
-				return true;
-			}
+			return true;
 		}
 	}
 	
